@@ -2,16 +2,15 @@
 
 
 
-## Is the feature related to a problem? Describe
-
-
-
 ## Describe alternatives/things to consider
 
 
 
 ## Which platform/language
 
+- [ ] Flutter
+- [ ] Android
+- [ ] iOS
 
 
 
