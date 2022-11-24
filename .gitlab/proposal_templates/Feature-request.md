@@ -7,10 +7,15 @@
 
 
 ## Which platform/language
-
+<!--- Which platform/language did the bug occur -->
 - [ ] Flutter
 - [ ] Android
 - [ ] iOS
+
+<!--- Remove non applying label commands below -->
+/label ~"target::flutter" 
+/label ~"target::android" 
+/label ~"target::ios" 
 
 
 
