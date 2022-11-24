@@ -3,11 +3,19 @@
 
 ## Make sure that you've checked the box below before you submit MR:
 
-- [ ] no conflict with master branch.
+- [ ] Documentation (if required)
 
 
 ## Which platform/language
 
+- [ ] Flutter
+- [ ] Android
+- [ ] iOS
+
+<!--- Remove non applying label commands below -->
+/label ~"target::flutter" 
+/label ~"target::android" 
+/label ~"target::ios" 
 
 ## Which issue this MR fixes (optional)
 
@@ -16,7 +24,6 @@
 
 
 /label ~"stage::in review"
-/cc @npz16
 
-Thanks for your MR, you're awesome! :+1:
+
 
