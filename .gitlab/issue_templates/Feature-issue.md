@@ -1,4 +1,3 @@
-
 ## Feature description
 <!--- Provide a general description of the issue  -->
 
