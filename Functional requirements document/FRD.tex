@@ -55,27 +55,23 @@ Rationale & #5
 
 % add similar functional requirements for the wearable devices and the IoT and smart home devices!
 
-\subsubsection{Getting list of devices}
+%\subsubsection{Getting list of devices}
 
-\fr{get supported devices}{The library must provide a list of devices, which are supported by the library. This list must contain all devices, that can be added and their sensors used.}{}{}{There must be an option for the user to select devices to add or to get information, which devices can be used.}{}{2}{FA-get-supported-devices}
+%\fr{get supported devices}{The library must provide a list of devices, which are supported by the library. This list must contain all devices, that can be added and their sensors used.}{}{}{There must be an option for the user to select devices to add or to get information, which devices can be used.}{}{2}{FA-get-supported-devices}
 
-\fr{get used devices}{The library knows, which devices are currently used or rather from which devices the currently added sensors come from.}{The device is added to the list of used devices, if the user manually add the device (c. f. \frref{FA-add-smartphone-sensors}).}{After the device is added, it will be contained in the list, the library return, if the used devices are requested by the user.}{There must be an option to check, whether a device is used. This is especially necessary when removing devices.}{\frref{FA-add-smartphone-sensors}}{3}{FA-get-used-devices}
+%\fr{get used devices}{The library knows, which devices are currently used or rather from which devices the currently added sensors come from.}{The device is added to the list of used devices, if the user manually add the device (c. f. \frref{FA-add-smartphone-sensors}).}{After the device is added, it will be contained in the list, the library return, if the used devices are requested by the user.}{There must be an option to check, whether a device is used. This is especially necessary when removing devices.}{\frref{FA-add-smartphone-sensors}}{3}{FA-get-used-devices}
 
-\subsubsection{Removing devices}
+%\subsubsection{Removing devices}
 
-\fr{check device is used}{The library can check, whether a device is currently used.}{Therefor the user must provide a device, that will be checked.}{}{To prevent bugs when removing or dealing with already removed or not added devices, it is useful to be able to check, whether this device is used and can be removed or dealt with.}{\frref{FA-get-used-devices}}{3}{FA-check-device-used}
+%\fr{check device is used}{The library can check, whether a device is currently used.}{Therefor the user must provide a device, that will be checked.}{}{To prevent bugs when removing or dealing with already removed or not added devices, it is useful to be able to check, whether this device is used and can be removed or dealt with.}{\frref{FA-get-used-devices}}{3}{FA-check-device-used}
 
-\fr{remove device}{The library must remove a device from the list of used devices.}{The device, which should be removed, must be used.}{The removed device will not longer returned, if the user request the used devices and all sensors, which are available on this device are no longer accessible and especially traceable.}{There must be an option to remove devices respectively all sensors, which are provided by this device, because maybe the user do not want to track the sensors any longer.}{\frref{FA-check-device-used}}{3}{FA-remove-device}
+%\fr{remove device}{The library must remove a device from the list of used devices.}{The device, which should be removed, must be used.}{The removed device will not longer returned, if the user request the used devices and all sensors, which are available on this device are no longer accessible and especially traceable.}{There must be an option to remove devices respectively all sensors, which are provided by this device, because maybe the user do not want to track the sensors any longer.}{\frref{FA-check-device-used}}{3}{FA-remove-device}
 
 \subsection{Organization of sensors}
 \label{ssec:Organization of sensors}
 \subsubsection{Adding sensor}
 
-\fr{check sensor name}{The library must check, whether the selected sensor name is valid. A sensor name is valid, if
-\begin{itemize}
-    \item the name is unique
-\end{itemize}
-}{}{}{If two or more sensors have the same names, the search for sensors by name is not unambiguous.}{}{3}{FA-check-sensor-name}
+%\fr{check sensor name}{The library must check, whether the selected sensor name is valid. A sensor name is valid, if \begin{itemize} \item the name is unique \end{itemize}}{}{}{If two or more sensors have the same names, the search for sensors by name is not unambiguous.}{}{3}{FA-check-sensor-name}
 
 \fr{check precision}{The library must check, whether the selected precision is valid. It is valid, if 
 \begin{itemize}
@@ -94,11 +90,11 @@ Rationale & #5
 \end{itemize}
 }{}{}{If the time interval is set to invalid value, it is not possible to request data from the sensor, which is the main task of this library.}{}{3}{FA-check-time-interval}
 
-\fr{add sensor for tracking}{The library must provide an API for adding a sensor to a list of tracked sensors.}{The sensor, the user want to add, needs to be known to the library. This means this sensor is in a list of implemented sensors.}{After adding the sensor to the list, the library will start tracking the sensor and make the data accessible from this moment on.}{The user must have the opportunity to add sensors, so they will be tracked, because otherwise there is no option to control, which sensors from the devices will be tracked and which not.}{\frref{FA-add-smartphone-sensors}, \frref{FA-check-sensor-name}, \frref{FA-check-precision}, \frref{FA-check-time-interval}}{3}{FA-add-sensor}
+\fr{add sensor for tracking}{The library must provide an API for adding a sensor to a list of tracked sensors.}{The sensor, the user want to add, needs to be known to the library. This means this sensor is in a list of implemented sensors.}{After adding the sensor to the list, the library will start tracking the sensor and make the data accessible from this moment on.}{The user must have the opportunity to add sensors, so they will be tracked, because otherwise there is no option to control, which sensors from the devices will be tracked and which not.}{\frref{FA-add-smartphone-sensors}, \frref{FA-check-precision}, \frref{FA-check-time-interval}}{3}{FA-add-sensor}
 % "adding a sensor to a list of tracked sensors" ist wahrscheinlich nicht die beste Formulierung
 % "This means this sensor is in a list of implemented sensors." ist wahrscheinlich auch nicht die beste Formulierung
 
-\fr{set sensor name}{In the process of adding a new sensor, the library must provide an opportunity for setting another name for the sensor.}{By default, every sensor will get a name by the library, which is changeable.}{The sensor will be identified by the new name from this moment on.}{The user must have the opportunity to set the name, because different users prefer different names. Furthermore this name is used for searching the sensor, so it is advantageous if the user knows the sensor names.}{\frref{FA-add-sensor}, \frref{FA-check-sensor-name}}{3}{FA-set-name}
+%\fr{set sensor name}{In the process of adding a new sensor, the library must provide an opportunity for setting another name for the sensor.}{By default, every sensor will get a name by the library, which is changeable.}{The sensor will be identified by the new name from this moment on.}{The user must have the opportunity to set the name, because different users prefer different names. Furthermore this name is used for searching the sensor, so it is advantageous if the user knows the sensor names.}{\frref{FA-add-sensor}, \frref{FA-check-sensor-name}}{3}{FA-set-name}
 
 \fr{set unit of sensor data}{In the process of adding a new sensor, the library must provide an opportunity for setting the unit of the sensor data.}{ Therefor the library must be able to deal with different units and provide the user a set of units, it can deal with and user can select from.}{From this moment on the data will be displayed in the selected unit.}{The user must have the opportunity to set the units, because different users are used to use different units (e. g. $^\circ C$ vs. $F$ for temperature)}{\frref{FA-add-sensor}}{1}{FA-set-unit}
 
@@ -106,17 +102,16 @@ Rationale & #5
 
 \fr{set time interval of sensor data}{In the process of adding a new sensor, the library must provide an opportunity for setting the time interval, in which the data should be \glqq{}requested\grqq{} from the sensor.}{Therefor the library must be able to deal with different time units and provide the user the option to select a time unit and input an unsigned integer. }{This unsigned integer combined with the time unit will represent the time interval and the sensor data will be collected in this time interval.}{The user must have the opportunity to set the frequency of getting the data, because the different sensors do not produce data at the same frequency. Furthermore it is possible, that the user is not interested in getting the sensor data in same regularity for different sensors. For example the user only want to know the temperature once in the morning, but the average activation of the smartphone every hour.}{\frref{FA-add-sensor}, \frref{FA-check-time-interval}}{3}{FA-set-time-interval}
 
-\fr{DRAFT: use microphone as sensor}{The library must provide an API for starting and stopping the use of the internal microphone of the device.}{}{}{Using the microphone can be helpful to determine the surrounding noise.}{}{1}{FA-use-microphone}
+%\fr{DRAFT: use microphone as sensor}{The library must provide an API for starting and stopping the use of the internal microphone of the device.}{}{}{Using the microphone can be helpful to determine the surrounding noise.}{}{1}{FA-use-microphone}
 \subsubsection{Editing sensor}
 
 \fr{edit properties of sensor}{The library must provide the opportunity to change the following properties of the sensor, which must be set when adding the sensor: 
 \begin{itemize}
     \item the unit of the sensor data
-    \item the name of the sensor
     \item the precision of the sensor data
     \item the time interval, the sensor data is collected
 \end{itemize}
-}{The new values set must be valid and the sensor, whose specifications will be changed, must be added before.}{The sensor will be named or provide data matching the changed values.}{The user must have the opportunity to change the properties of the sensor, because users can make mistakes when input values and that's why input must be editable.}{\frref{FA-check-sensor-name}, \frref{FA-check-precision}, \frref{FA-check-time-interval}, \frref{FA-add-sensor}}{2}{FA-edit-sensor}
+}{The new values set must be valid and the sensor, whose specifications will be changed, must be added before.}{The sensor will be named or provide data matching the changed values.}{The user must have the opportunity to change the properties of the sensor, because users can make mistakes when input values and that's why input must be editable.}{\frref{FA-check-precision}, \frref{FA-check-time-interval}, \frref{FA-add-sensor}}{2}{FA-edit-sensor}
 
 \subsection{Getting sensor list}
 
@@ -132,9 +127,9 @@ Rationale & #5
 
 \subsubsection{Search sensor}
 
-\fr{search by name}{The library must provide an API for searching a sensor by its sensor name. Therefor the API must accept a name (and optional the information, whether only currently tracked or all matching sensors should be returned). If matching sensors exist, they should be returned to the user.}{The provided sensor name is valid and matches any sensor, otherwise there cannot be a list returned.}{}{If the user want to get a specific sensor, searching by name is a simplification for the user because he do not read through all sensors}{\frref{FA-check-sensor-name}}{3}{FA-search-sensor-by-name}
+\fr{search by name}{The library must provide an API for searching a sensor by its sensor name. Therefor the API must accept a name (and optional the information, whether only currently tracked or all matching sensors should be returned). If matching sensors exist, they should be returned to the user.}{The provided sensor name is valid and matches any sensor, otherwise there cannot be a list returned.}{}{If the user want to get a specific sensor, searching by name is a simplification for the user because he do not read through all sensors}{}{3}{FA-search-sensor-by-name}
 
-\fr{search by device}{The library must provide an API for searching a sensor by the device it belongs to. Therefor the API must accept a device name (and optional the information, whether only currently tracked or all matching sensors should be returned). If matching devices exist, the sensors (currently active or all depending on the search parameters) should be returned to the user.}{The provided device name is valid and matches any known device, otherwise there cannot be a list returned.}{}{If the user want to get a specific sensor, searching by device is an option, if the user do not know the name, but the device and do not want to search trough all sensors}{\frref{FA-get-supported-devices}}{1}{FA-search-sensor-by-device}
+%\fr{search by device}{The library must provide an API for searching a sensor by the device it belongs to. Therefor the API must accept a device name (and optional the information, whether only currently tracked or all matching sensors should be returned). If matching devices exist, the sensors (currently active or all depending on the search parameters) should be returned to the user.}{The provided device name is valid and matches any known device, otherwise there cannot be a list returned.}{}{If the user want to get a specific sensor, searching by device is an option, if the user do not know the name, but the device and do not want to search trough all sensors}{\frref{FA-get-supported-devices}}{1}{FA-search-sensor-by-device}
 
 \subsection{Management of data from sensor}
 \label{ssec:Management of data from sensor}
@@ -143,7 +138,7 @@ Rationale & #5
 
 \fr{check sensor (data) is available}{The library can check, whether a sensor is available respectively the sensor can provide data.}{The sensor was added and is currently running.}{}{Before data from a sensor is requested, this sensor must be available, because otherwise it cannot provide sensor data.}{\frref{FA-add-sensor}, \frref{FA-add-smartphone-sensors}}{3}{FA-check-sensor-available}
 
-\fr{fetch data from sensor}{The library must provide an API, which is able to deal with a sensor name and fetch the data from the sensor, identified by the provided name.}{The provided sensor name is valid (c. f. \frref{FA-check-sensor-name}) and the sensor, identified by the name, must be available, which must be checked before}{}{The user must be able to get information of the sensors, because they not only collect data but also provide them.}{\frref{FA-check-sensor-available}, \frref{FA-check-sensor-name}}{3}{FA-fetch-sensor-data}
+\fr{fetch data from sensor}{The library must provide an API, which is able to deal with a sensor name and fetch the data from the sensor, identified by the provided name.}{The provided sensor name is valid and the sensor, identified by the name, must be available, which must be checked before}{}{The user must be able to get information of the sensors, because they not only collect data but also provide them.}{\frref{FA-check-sensor-available}}{3}{FA-fetch-sensor-data}
 
 \subsubsection{Saving sensor data}
 
@@ -159,13 +154,13 @@ Rationale & #5
 
 \fr{save processed sensor data}{If the user requested processed data, the data in combination with the query will be saved in the storage.}{The query must be valid, so only containing known aggregate functions and retrieving methods from \frref{FA-retrieve-sensor-data-time-interval}, \frref{FA-retrieve-sensor-data-moment-in-time}, \frref{FA-retrieve-sensor-data-by-aggregate-function}}{If a user use the same query again, the data will not be aggregated again, but the stored values will be returned.}{If requests are saved, the data do not need to be re-aggregated, if the user do the same request again.}{\frref{FA-retrieve-sensor-data-time-interval}, \frref{FA-retrieve-sensor-data-moment-in-time}, \frref{FA-retrieve-sensor-data-by-aggregate-function}}{1}{FA-save-processed-data}
 
-\fr{remove sensor data}{The library must provide an API for deleting sensor data points. This means, the user can provide a time interval and a sensor name and all data points from the sensor identified by the name are deleted from the local storage.}{The user need to provide a valid sensor name, whose data the user want to delete. Furthermore the user needs to provide a valid time interval and the sensor needs to have data points in this time interval.}{The requested data will be deleted permanently, so there is no chance to restore the data or to retrieve this data again.}{The user must have the opportunity to delete sensor data because otherwise he would not have the control over the data.}{\frref{FA-check-sensor-name}, \frref{FA-check-time-interval}}{3}{FA-delete-sensor-data}
+\fr{remove sensor data}{The library must provide an API for deleting sensor data points. This means, the user can provide a time interval and a sensor name and all data points from the sensor identified by the name are deleted from the local storage.}{The user need to provide a valid sensor name, whose data the user want to delete. Furthermore the user needs to provide a valid time interval and the sensor needs to have data points in this time interval.}{The requested data will be deleted permanently, so there is no chance to restore the data or to retrieve this data again.}{The user must have the opportunity to delete sensor data because otherwise he would not have the control over the data.}{\frref{FA-check-time-interval}}{3}{FA-delete-sensor-data}
 
 \subsubsection{Retrieving sensor data}
 
 \fr{retrieve sensor data by specific moment in time}{The library must provide an API, so the user can retrieve the data of a specific sensor at a specific moment in time.}{The user need to provide a sensor, whose data the user want and the sensor needs to have a data point at this moment in time.}{}{The user must have the opportunity to get historic data namely on a specific moment in time.}{\frref{FA-fetch-sensor-data}, \frref{FA-save-live-data}, \frref{FA-save-high-frequent-data}}{3}{FA-retrieve-sensor-data-moment-in-time} 
 
-\fr{retrieve sensor data by time interval}{The library must provide an API, so the user can retrieve the data between to specific moments in time. This means, that a user can provide a begin time and an end time and the library return all collected data between this two times.}{The user need to provide a valid sensor name, whose data the user want. Furthermore the user needs to provide a time interval and the sensor needs to have data points in this time interval.}{}{The user must have the opportunity to get historic data namely a series of historic data in a certain time interval. This can be useful for later evaluation.}{\frref{FA-check-sensor-name}, \frref{FA-check-time-interval}, \frref{FA-fetch-sensor-data}, \frref{FA-save-live-data}, \frref{FA-save-high-frequent-data}}{}{FA-retrieve-sensor-data-time-interval}
+\fr{retrieve sensor data by time interval}{The library must provide an API, so the user can retrieve the data between to specific moments in time. This means, that a user can provide a begin time and an end time and the library return all collected data between this two times.}{The user need to provide a valid sensor name, whose data the user want. Furthermore the user needs to provide a time interval and the sensor needs to have data points in this time interval.}{}{The user must have the opportunity to get historic data namely a series of historic data in a certain time interval. This can be useful for later evaluation.}{\frref{FA-check-time-interval}, \frref{FA-fetch-sensor-data}, \frref{FA-save-live-data}, \frref{FA-save-high-frequent-data}}{}{FA-retrieve-sensor-data-time-interval}
 
 \fr{apply aggregate functions on sensor data}{The library must provide an API, so the user can apply aggregate functions on sensor data and retrieve the results. The supported aggregate functions will be 
 \begin{itemize}
@@ -179,7 +174,7 @@ Rationale & #5
     \item range, so the distance between the minimum and the maximum
     \item standard deviation
 \end{itemize}
-All this function only make sense, if they are applied on a series of data points from a time interval. The aggregate functions can be combined, if possible.}{The user need to provide a valid sensor name and a time interval or specific moment in time, which define the data set to user want to process. Furthermore the user needs to provide an aggregate function, which should be also applicable.}{The requested data set will not be manipulated in the storage directly, but there will be a copy which will be manipulated and returned.}{The user must have the opportunity to process the sensor data, which is useful for evaluation.}{\frref{FA-retrieve-sensor-data-moment-in-time}, \frref{FA-retrieve-sensor-data-time-interval}, \frref{FA-check-sensor-name}, \frref{FA-check-time-interval}}{3}{FA-retrieve-sensor-data-by-aggregate-function}
+All this function only make sense, if they are applied on a series of data points from a time interval. The aggregate functions can be combined, if possible.}{The user need to provide a valid sensor name and a time interval or specific moment in time, which define the data set to user want to process. Furthermore the user needs to provide an aggregate function, which should be also applicable.}{The requested data set will not be manipulated in the storage directly, but there will be a copy which will be manipulated and returned.}{The user must have the opportunity to process the sensor data, which is useful for evaluation.}{\frref{FA-retrieve-sensor-data-moment-in-time}, \frref{FA-retrieve-sensor-data-time-interval}, \frref{FA-check-time-interval}}{3}{FA-retrieve-sensor-data-by-aggregate-function}
 
 \fr{combine queries}{A query, so a request against the library for sensor data of a specific sensor within a specific time interval or on a specific moment in time (maybe with applied aggregate functions) should be applicable to multiple sensors. This means, if the user provide a set of sensor names, all sensor identified by the names, will get the same provided query. The response of every sensor is bundled into on response.}{The user need to provide valid sensor names. Furthermore the user needs to provide a time interval or specific moment in time and the sensors needs to have data points in this time interval.}{}{When working with the library it can be useful, if you do not need to do the same request for every sensor you are interested in, but use one query on multiple sensors and get a bundle of responses to work with. This is easier for working with the library and can be helpful if you want to compare different sensor data.}{\frref{FA-retrieve-sensor-data-moment-in-time}, \frref{FA-retrieve-sensor-data-time-interval}, \frref{FA-retrieve-sensor-data-by-aggregate-function}}{2}{FA-combine-queries}
 
@@ -195,7 +190,7 @@ Additionally the library respectively the smart sensing plugin should be tested.
 \begin{itemize}
     \item ... be able to get the information about the smartphone it is currently running on and display the information or a hint or error, that getting this information was not possible.
     \item ... select a specific sensor and start tracking the sensor
-    \item ... select a specific sensor and edit it properties, so change the unit, sensor name, precision, time interval.
+    \item ... select a specific sensor and edit it properties, so change the unit, precision, time interval.
     \item ... select a specific sensor and stop tracking the sensor
     \item ... search for a specific sensor
     \item ... select a specific sensor and display the live data from this sensor
