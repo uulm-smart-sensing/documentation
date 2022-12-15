@@ -2,15 +2,22 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage[margin=2cm,a4paper,headsep=1.2cm]{geometry}
 \usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
 
 \renewcommand{\baselinestretch}{1.1}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
+
+\setlength{\headheight}{1cm}
+\setlength{\headwidth}{\textwidth}
 
 \makeatletter
 \newcommand{\labeltext}[2]{%
@@ -38,7 +45,7 @@ Rationale & #5
 \vspace*{0.75cm}
 }
 
-\newcommand{\actor}[4]{
+\newcommand{\actor}[3]{
 \labeltext{#2}{#1}
 \begin{tabularx}{16cm}{|l|X|}
 \hline 
@@ -53,13 +60,84 @@ Description: & #3 \\
 \newcommand{\frref}[1]{FR\ref{#1}\textsuperscript{$\rightarrow$ p. \pageref{#1}}}
 \newcommand{\nfrref}[1]{QR\ref{#1}\textsuperscript{$\rightarrow$ p. \pageref{#1}}}
 
+\newcommand{\myrule}[1]{
+	\begin{tikzpicture}
+		\draw[{Diamond[open]}-{Diamond[open]}, ultra thick] (0,0) to (#1, 0);
+	\end{tikzpicture}
+}
+
+\renewcommand{\contentsname}{Table of Contents}
+
 \begin{document}
+
+% title page 
+\begin{titlepage}
+
+	\centering 
+	\scshape 
+	\vspace*{\baselineskip}
+		
+	\myrule{\linewidth}	
+	\rule[1\baselineskip]{0.95\textwidth}{0.4pt}
+    
+    \Large
+    Software Requirements Document
+    \normalsize
+   
+
+	\rule[-1\baselineskip]{0.95\textwidth}{0.4pt}
+	\myrule{\linewidth}
+	
+	\vspace{2\baselineskip}
+
+    Flutter smart sensing library \\ for medical and psychological study apps
+	
+	
+	\vspace*{15\baselineskip}
+	
+	edited by
+	
+	\vspace{0.55\baselineskip}
+	
+	{\scshape Leonhard Alkewitz, Florian Gebhardt, Hermann Fröhlich, \\ Mukhtar Muse, Felix Schlegel}
+	
+	\vspace{0.55\baselineskip}
+	
+	\vfill
+	
+\end{titlepage}
+
+
+% table of contents
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+
+% configure header and footer
+\pagestyle{fancy}
+
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\leftmark}
+\fancyfoot{}
+
+\section{Introduction}
+Study apps can be helpful for the successful conduct of medical and psychological studies. 
+Especially the use of sensors, for example from smartphones or wearables, can provide useful data to support the study. 
+Therefore, the development of such apps should be as simple as possible in order to be able to use them without great effort. 
+That's why we develop a smart sensing library, which can be used to easily implement cross-platform apps with Flutter. \\ 
+This library will be able to track sensors from the smartphone and some wearables, collect the sensor data and save it. 
+Additionally, it will be possible to either get live data or store and process the data. 
+
+\section{Definitions}
+\subsubsection{Glossary}
+
+\subsubsection{Actors}
 
 \section{Functional requirements}
 \subsection{Management of devices}
 \label{ssec:Management of devices}
 \subsubsection{Smartphone}
-
 
 \fr{get smartphone information}{The library must be able to get information about the smartphone on which the smart sensing app, which is developed with the library, is installed on. This information include \begin{itemize} \item the current operation system (OS) and it's version (e. g. iOS 16.1) \item the currently free storage on the smartphone \end{itemize}}{The user must allow the app to get the smartphone information. If the user deny, the library must provide a hint, which can be shown up in the app.}{}{The library must collect data about the current smartphone to figure out, which sensors are available and which implementation to use (e. g. based on current OS). But the user must have the control, which data the app respectively the library collect.}{}{3}{FA-get-smartphone-information}
 
@@ -208,6 +286,8 @@ Additionally the library respectively the smart sensing plugin should be tested.
     \item ... select a specific sensor and display the live data from this sensor
     \item ... select a specific sensor and display processed or historical data from this sensor
 \end{itemize}
+
+\section{Non-functional requirements}
 
 \end{document}
 
