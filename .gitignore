@@ -314,4 +314,4 @@ TSWLatexianTemp*
 # End of https://www.toptal.com/developers/gitignore/api/latex
 
 # ignore the produced documents, if compiling latex 
-Functional requirements document/FRD.pdf
+Software requirements document/SRD.pdf
