@@ -38,6 +38,17 @@ Rationale & #5
 \vspace*{0.75cm}
 }
 
+\newcommand{\actor}[4]{
+\labeltext{#2}{#1}
+\begin{tabularx}{16cm}{|l|X|}
+\hline 
+Actor: & #2 \\
+\hline
+Description: & #3 \\
+\hline
+\end{tabularx}
+}
+
 \newcommand{\rref}[1]{\ref{#1}\textsuperscript{$\rightarrow$ p. \pageref{#1}}}
 \newcommand{\frref}[1]{FR\ref{#1}\textsuperscript{$\rightarrow$ p. \pageref{#1}}}
 \newcommand{\nfrref}[1]{QR\ref{#1}\textsuperscript{$\rightarrow$ p. \pageref{#1}}}
@@ -47,9 +58,10 @@ Rationale & #5
 \section{Functional requirements}
 \subsection{Management of devices}
 \label{ssec:Management of devices}
-\subsubsection{Adding devices}
+\subsubsection{Smartphone}
 
-\fr{get smartphone information}{The library must be able to get information about the smartphone, on which the smart sensing app, which is developed with the library, is installed on.}{The user must allow the app to get the smartphone information. If the user deny, the library must provide a hint, which can be shown up in the app.}{}{The library must collect data about the current smartphone to figure out, which sensors are available and which implementation to use (e. g. based on current OS). But the user must have the control, which data the app respectively the library collect.}{}{3}{FA-get-smartphone-information}
+
+\fr{get smartphone information}{The library must be able to get information about the smartphone on which the smart sensing app, which is developed with the library, is installed on. This information include \begin{itemize} \item the current operation system (OS) and it's version (e. g. iOS 16.1) \item the currently free storage on the smartphone \end{itemize}}{The user must allow the app to get the smartphone information. If the user deny, the library must provide a hint, which can be shown up in the app.}{}{The library must collect data about the current smartphone to figure out, which sensors are available and which implementation to use (e. g. based on current OS). But the user must have the control, which data the app respectively the library collect.}{}{3}{FA-get-smartphone-information}
 
 \fr{add smartphone sensors}{The library must provide the opportunity to user to add all sensors available on the smartphone to a list of usable sensors.}{The user must allow the library to discover all sensor by getting the smartphone information and the library got the information about the smartphone.}{All discovered and added sensors can be tracked from now on. The tracking can be started by \glqq{}adding\grqq{} the sensors (c. f. \frref{FA-add-sensor}).}{There must be an option for the user to make the sensors on its smartphone traceable. Otherwise the user would not have the freedom to choose which sensors to use.}{\frref{FA-get-smartphone-information}}{3}{FA-add-smartphone-sensors}
 
