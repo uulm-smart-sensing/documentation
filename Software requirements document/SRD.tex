@@ -130,9 +130,15 @@ This library will be able to track sensors from the smartphone and some wearable
 Additionally, it will be possible to either get live data or store and process the data. 
 
 \section{Definitions}
-\subsubsection{Glossary}
+\subsection{Glossary}
 
-\subsubsection{Actors}
+\subsection{Actors}
+
+\actor{developer}{developer}{\textit{developer} means a person, who develop a study app with the library (which is the prodcut of this project). For example the development team creating this document assumes the role of a \textit{developer} when creating the demo app (c. f. \ref{ssec:demoapp})}
+
+\actor{enduser}{end-user}{\textit{end-user} means a person, who uses a study app, which was implemented with the library (which is the prodcut of this project). So for example the development team creating this document assumes this role when testing the \textit{Demo App}(c. f. \ref{ssec:demoapp}).}
+
+\actor{user}{user}{In most cases it makes no difference, whether the requirements is motivated by the \textit{end-user} or the \textit{developer}, because the \textit{developer} only displays the information of the library or delegates the input of the \textit{end-user}. Therefore, we speak of \textit{user}, if we want to express, that the \textit{developer} as well as the \textit{end-user} motivate a requirement.}
 
 \section{Functional requirements}
 \subsection{Management of devices}
@@ -276,7 +282,8 @@ All this function only make sense, if they are applied on a series of data point
 \fr{export sensor data}{The library must provide an opportunity to export sensor data from the local storage in a specific format. Therefor the user must be able to select a format and a start as well as end time and a sensor name. The library must export all data from the sensor, identified by the name, which are between the start and the end time.}{The import format (c. f. \frref{FA-specify-import-export-format}) must be supported by the library and the input values must be valid.}{The exported data will be on the target volume in the specified format.}{The user maybe want to use the data beyond the app or want archive the data externally.}{\frref{FA-specify-import-export-format}}{2}{FA-export-sensor-data}
 
 \subsection{Demo app}
-Additionally the library respectively the smart sensing plugin should be tested. This can be done by implementing a demo app using the library. In general the demo app must be able to demonstrate the successful implementation of all previously listed requirements (c. f. \ref{ssec:Management of devices} - \ref{ssec:Management of data from sensor}). That means, the demo app should ... 
+\label{ssec:demoapp}
+Additionally, the library respectively the smart sensing plugin should be tested. This can be done by implementing a demo app using the library. In general the demo app must be able to demonstrate the successful implementation of all previously listed requirements (c. f. \ref{ssec:Management of devices} - \ref{ssec:Management of data from sensor}). That means, the demo app should ... 
 \begin{itemize}
     \item ... be able to get the information about the smartphone it is currently running on and display the information or a hint or error, that getting this information was not possible.
     \item ... select a specific sensor and start tracking the sensor
