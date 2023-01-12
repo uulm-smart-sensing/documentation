@@ -15,11 +15,16 @@ variables:
   # adnrv/texlive
   LATEX_IMAGE: listx/texlive:2020
 
-build:
+stages:
+  - latex
+
+SRD:
+  stage: latex
   image: $LATEX_IMAGE
   script:
-    - latexmk -pdf
-
+    -|
+      cd "Software requirements document"
+      latexmk -pdf
   artifacts:
     paths:
       - "*.pdf"
