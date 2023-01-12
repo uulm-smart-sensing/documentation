@@ -27,4 +27,4 @@ SRD:
       latexmk -pdf
   artifacts:
     paths:
-      - "*.pdf"
+      - "Software requirements document/SRD.pdf"
