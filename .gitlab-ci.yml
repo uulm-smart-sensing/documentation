@@ -26,5 +26,6 @@ SRD:
       cd "Software requirements document"
       latexmk -pdf
   artifacts:
+    expose_as: "SRD"
     paths:
       - "Software requirements document/SRD.pdf"
