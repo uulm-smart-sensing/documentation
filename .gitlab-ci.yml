@@ -22,7 +22,7 @@ SRD:
   stage: latex
   image: $LATEX_IMAGE
   script:
-    -|
+    - |
       cd "Software requirements document"
       latexmk -pdf
   artifacts:
