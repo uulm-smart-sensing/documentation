@@ -7,3 +7,9 @@
 - [2022-10-30](Protocols/2022_10_30)
 - [2022-11-04](Protocols/2022_11_04)
 
+# (Non-) Functional Requirement
+
+[Functional Requirement](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/documentation/-/blob/docs/1-write-down-non-functional-requirements/Software%20requirements%20document/SRD.tex)
+
+
+
