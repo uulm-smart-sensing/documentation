@@ -45,7 +45,7 @@ SRD:commit:
       git config user.email "noreply+latex-compile-bot@${CI_SERVER_HOST}"
   script:
     - |
-      git add "Software requirements document/SRD.pdf"
+      git add -f "Software requirements document/SRD.pdf"
       git commit -m "docs: commit document"
       git push ci HEAD:$CI_COMMIT_REF_NAME
   after_script:
