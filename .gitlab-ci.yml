@@ -1,0 +1,52 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/LaTeX.gitlab-ci.yml
+
+---
+variables:
+  # Feel free to choose the image that suits you best.
+  # blang/latex:latest ... Former image used in this template. No longer maintained by author.
+  # listx/texlive:2020 ... The default, referring to TexLive 2020. Current at least to 2021-02-02.
+
+  # Additional alternatives with high Docker pull counts:
+  # thomasweise/docker-texlive-full
+  # thomasweise/texlive
+  # adnrv/texlive
+  LATEX_IMAGE: listx/texlive:2020
+
+stages:
+  - latex
+
+SRD:
+  stage: latex
+  image: $LATEX_IMAGE
+  script:
+    - |
+      cd "Software requirements document"
+      latexmk -pdf
+  artifacts:
+    expose_as: "SRD"
+    paths:
+      - "Software requirements document/SRD.pdf"
+
+SRD:commit:
+  stage: latex
+  image: $LATEX_IMAGE
+  needs:
+    - job: SRD
+      artifacts: true
+  when: manual
+  before_script:
+  # LATEX_COMPILE_TOKEN is a group access token which is available as a CI variable
+    - |
+      git remote add ci https://oauth2:${LATEX_COMPILE_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+      git config user.name "latex-compile bot"
+      git config user.email "noreply+latex-compile-bot@${CI_SERVER_HOST}"
+  script:
+    - |
+      git add -f "Software requirements document/SRD.pdf"
+      git commit -m "docs: commit document"
+      git push ci HEAD:$CI_COMMIT_REF_NAME
+  after_script:
+    - git remote rm ci
