@@ -9,7 +9,4 @@
 
 # (Non-) Functional Requirement
 
-[Functional Requirement](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/documentation/-/blob/docs/1-write-down-non-functional-requirements/Software%20requirements%20document/SRD.tex)
-
-
-
+[Functional Requirement](./Software%20requirements%20document/SRD.pdf)
