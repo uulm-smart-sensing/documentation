@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage{svg}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{tabularx}
@@ -164,34 +165,108 @@ There was an architectural change made where the preprocessing is now part of th
 \newpage
 \section{Class Diagramms}
 This section covers the class diagrams for each component. Each diagram includes a description of the design choices made for that component.
+
 \subsection{IOManager}
+The IOManager component manages all functions related to data storage and transfer. It is the main component for the Smart Sensing Library.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.9\textwidth]{Graphics/CIOManager}
+\caption{\label{fig:bild5} IOManager Component}
+\end{figure}
+
+
+\subsubsection{IOManager}
 The IOManager is implemented using the Singleton pattern. The reason for this is that sensor data should be controlled by only one component, and not multiple, to prevent multiple access to data streams. There is always only one IOManager present in the Smart Sensing Library, it controls all data operations related to sensor data.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.9\textwidth]{Graphics/IOManager.png}
-\caption{\label{fig:bild5} IO Manager Class Diagramm}
+\includesvg[width=.6\textwidth]{Graphics/IOManager}
+\caption{\label{fig:bild6} IOManager}
 \end{figure}
-\newpage
+
 \subsubsection{BufferManager}
 The BufferManager class functions as a cache for currently used data. All new data is first saved into its buffer. If it becomes full, the IOManager takes its current content and saves it to the database if necessary. The Buffer Manager only contains sensor data that hasn't been modified by filters, this way the data can be reused by different functions.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.3\textwidth]{Graphics/BufferManager.png}
-\caption{\label{fig:bild6} Buffer Manager}
+\includesvg[width=0.6\textwidth]{Graphics/BufferManager}
+\caption{\label{fig:bild7} BufferManager}
 \end{figure}
+
+\newpage
 \subsubsection{FilterTools}
 The FilterTools are used to modify the data from the BufferManager by deep-copying the needed values. After the initial copy, filters can be chained to create more complex queries. The FilterTools provide the only means for accessing the data.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.4\textwidth]{Graphics/FilterTools.png}
-\caption{\label{fig:bild7} Filter Tools}
+\includesvg[width=0.6\textwidth]{Graphics/FilterTools}
+\caption{\label{fig:bild8} FilterTools}
 \end{figure}
+\newpage
+
 \subsection{SensorManager}
-\subsubsection{Preprocessor}
+The SensorManager component serves as the interface between Dart code and platform-specific code. It offers the ability to subscribe and unsubscribe to sensor data streams and preprocesses the data to ensure that Android and iOS return consistent value types. The preprocessing can be configured as needed.
 \begin{figure}[ht]
-\includegraphics[width=1\textwidth]{Graphics/Preprocessor.png}
-\caption{\label{fig:bild8} Preprocessor}
+\centering
+\includesvg[width=0.9\textwidth]{Graphics/CSensorManager}
+\caption{\label{fig:bild9} SensorManager Component}
 \end{figure}
+
+\subsubsection{SensorManager}
+The SensorManager class is the central control unit for the component and follows the singleton design pattern. It manages all aspects related to subscribing and unsubscribing to sensors.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/Sensormanager}
+\caption{\label{fig:bild10} SensorManager}
+\end{figure}
+
+\subsubsection{Sensor}
+This class is representing a sensor.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/Sensor}
+\caption{\label{fig:bild11} Sensor}
+\end{figure}
+
+\subsubsection{SensorPropertyValidator}
+The SensorPropertyValidator class ensures that the specified precision and time interval are maintained.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/SensorPropertyValidator}
+\caption{\label{fig:bild12} SensorPropertyValidator}
+\end{figure}
+\newpage
+
+\subsubsection{Preprocessor}
+The Peprocessor class ensures that Android and iOS return consistent value types. It can be configured with the SensorConfig.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/PreProcessor}
+\caption{\label{fig:bild13} Preprocessor}
+\end{figure}
+
+\subsubsection{SensorConfig}
+The SensorConfig class holds various configurations for the preprocessor, including the time interval, precision, and target unit.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/SensorConfig}
+\caption{\label{fig:bild14} SensorConfig}
+\end{figure}
+
+\newpage
+\subsubsection{SensorDataSubscriber}
+The SensorDataSubscriber class manages multiple subscriptions and is utilized by the SensorManager class.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/DataSubscriber}
+\caption{\label{fig:bild15} Preprocessor}
+\end{figure}
+
+\subsubsection{SensorData}
+The SensorData class represents the data received from a sensor and serves as the data model for the document-based database.
+\begin{figure}[ht]
+\centering
+\includesvg[width=0.6\textwidth]{Graphics/SensorData}
+\caption{\label{fig:bild16} Preprocessor}
+\end{figure}
+
 \newpage
 \section{Processes}
 \subsection{Sequence Diagrams}
@@ -200,12 +275,14 @@ This section contains sequence diagrams for getting and modifying data.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\textwidth]{Graphics/SeqStart.png}
-\caption{\label{fig:bild8} Starting sequence diagram}
+\caption{\label{fig:bild17} Starting sequence diagram}
 \end{figure}
+
+\newpage
 \subsection{Getting Data via a filter}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\textwidth]{Graphics/SeqFilter.png}
-\caption{\label{fig:bild9} Filtering sequence diagram}
+\caption{\label{fig:bild18} Filtering sequence diagram}
 \end{figure}
 \end{document}
