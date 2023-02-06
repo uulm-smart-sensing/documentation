@@ -18,9 +18,26 @@ variables:
 stages:
   - latex
 
-SRD:
+.latex:
   stage: latex
   image: $LATEX_IMAGE
+
+.latex-commit:
+  stage: latex
+  image: $LATEX_IMAGE
+  when: manual
+  before_script:
+  # LATEX_COMPILE_TOKEN is a group access token which is available as a CI variable
+    - |
+      git remote add ci https://oauth2:${LATEX_COMPILE_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+      git config user.name "latex-compile bot"
+      git config user.email "noreply+latex-compile-bot@${CI_SERVER_HOST}"
+  after_script:
+    - git remote rm ci
+
+
+SRD:
+  extends: .latex
   script:
     - |
       cd "Software requirements document"
@@ -31,22 +48,34 @@ SRD:
       - "Software requirements document/SRD.pdf"
 
 SRD:commit:
-  stage: latex
-  image: $LATEX_IMAGE
+  extends: .latex-commit
   needs:
     - job: SRD
       artifacts: true
-  when: manual
-  before_script:
-  # LATEX_COMPILE_TOKEN is a group access token which is available as a CI variable
-    - |
-      git remote add ci https://oauth2:${LATEX_COMPILE_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
-      git config user.name "latex-compile bot"
-      git config user.email "noreply+latex-compile-bot@${CI_SERVER_HOST}"
   script:
     - |
       git add -f "Software requirements document/SRD.pdf"
       git commit -m "docs: commit document"
       git push ci HEAD:$CI_COMMIT_REF_NAME
-  after_script:
-    - git remote rm ci
+
+SDD:
+  extends: .latex
+  script:
+    - |
+      cd "Software design document"
+      latexmk -pdf
+  artifacts:
+    expose_as: "SDD"
+    paths:
+      - "Software design document/design_doc.pdf"
+
+SDD:commit:
+  extends: .latex-commit
+  needs:
+    - job: SDD
+      artifacts: true
+  script:
+    - |
+      git add -f "Software design document/design_doc.pdf"
+      git commit -m "docs: commit document"
+      git push ci HEAD:$CI_COMMIT_REF_NAME
