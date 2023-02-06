@@ -63,7 +63,6 @@ SDD:
   script:
     - |
       cd "Software design document"
-      add-apt-repository ppa:inkscape.dev/stable
       apt update
       apt install inkscape
       latexmk -pdf -shell-escape
