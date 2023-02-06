@@ -63,8 +63,7 @@ SDD:
   script:
     - |
       cd "Software design document"
-      apt update
-      apt install inkscape
+      nix-env -i inkscape
       latexmk -pdf -shell-escape
   artifacts:
     expose_as: "SDD"
