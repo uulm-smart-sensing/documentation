@@ -63,7 +63,7 @@ SDD:
   script:
     - |
       cd "Software design document"
-      latexmk -pdf
+      latexmk -pdf -shell-escape
   artifacts:
     expose_as: "SDD"
     paths:
