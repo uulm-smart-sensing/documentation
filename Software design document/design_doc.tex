@@ -202,7 +202,7 @@ The FilterTools are used to modify the data from the BufferManager by deep-copyi
 \newpage
 
 \subsection{SensorManager}
-The SensorManager component serves as the interface between Dart code and platform-specific code. It offers the ability to subscribe and unsubscribe to sensor data streams and preprocesses the data to ensure that Android and iOS return consistent value types. The preprocessing can be configured as needed.
+The SensorManager component serves as the interface between Dart code and platform-specific code. It offers the ability to subscribe and unsubscribe to sensor data streams, which implements the pub/sub pattern. It also preprocesses the data to ensure that Android and iOS return consistent value types. The preprocessing can be configured as needed.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.9\textwidth]{Graphics/CSensorManager}
