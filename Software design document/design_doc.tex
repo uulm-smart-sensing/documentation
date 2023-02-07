@@ -140,7 +140,7 @@ The Smart Sensing Library contains most of the features requested by the custome
 \caption{\label{fig:bild1}Version 1.0}
 \end{figure}
 \subsubsection{Version 1.1}
-There was an architectural change made where the Buffermanager and FilterTools were wrapped around a new component called IOManager.
+An architectural change was made where the BufferManager and FilterTools were incorporated into a new component called IOManager.
 The reason for this change is that the coordination between the API, FilterTools, and BufferManager was not considered while creating the first iteration. The IOManager is now the primary communication point between the API and the underlying services.
 \begin{figure}[ht]
 \includegraphics[width=1\textwidth]{Graphics/SmartSensingLibraryNew.png}
