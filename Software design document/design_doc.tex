@@ -148,7 +148,7 @@ The reason for this change is that the coordination between the API, FilterTools
 \end{figure}
 \newpage
 \subsection{Sensing Plugin}
-The Sensing Plugin is responsible for getting sensor data from iOS and Android devices. It's split into two main parts: the platform-specific code and the Flutter code. The platform-specific code is responsible for getting sensor data from each device using factory methods provided by the corresponding operating system. These methods can then be called by the Flutter code using method channels. In the Flutter code, the data is unified so that the Smart Sensing Library can work with the data. The Sensor Manager has two main components. The Command Caller is responsible for delegating customer request like sensor subscription. The Sensor Event Subscriber handels the return of the subscriptions.
+The Sensing Plugin is responsible for getting sensor data from iOS and Android devices. It's split into two main parts: the platform-specific code and the Dart code. The platform-specific code is responsible for getting sensor data from each device using factory methods provided by the corresponding operating system. These methods can then be called by the Dart code using method channels. In the Dart code, the data is unified so that the Smart Sensing Library can work with the data. The Sensor Manager has two main components. The Command Caller is responsible for delegating customer request like sensor subscription. The Sensor Event Subscriber handels the return of the subscriptions.
 \subsubsection{Version 1}
 \begin{figure}[ht]
 \includegraphics[width=1\textwidth]{Graphics/SmartSensingPluginOld.png}
@@ -210,7 +210,7 @@ The SensorManager component serves as the interface between Dart code and platfo
 \end{figure}
 
 \subsubsection{SensorManager}
-The SensorManager class is the central control unit for the component and follows the singleton design pattern. It manages all aspects related to subscribing and unsubscribing to sensors.
+The SensorManager class is the central control unit for the component and follows the singleton design pattern. It manages all aspects related to subscribing and unsubscribing to sensors and delegates these requests to the platform-specific code, which then returns the corresponding responses.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/Sensormanager}
