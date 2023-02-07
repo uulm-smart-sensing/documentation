@@ -128,10 +128,10 @@ Representative: & #4 \\
 \section{Introduction}
 This document lists all the architectures for the Flutter Smart Sensing Library. Each diagram includes a description of why it was designed in that way and why certain changes were necessary. Every change is listed in this document.
 \section{Software Architecture}
-This section covers the software architecture. It is split into two core components: the Smart Sensing Library and the Sensing Plugin. The reason for this is that we have one component to get and read sensor data in a platform-independent way, while the other component represents most of the smart features like storage and filtering of values.
+This section covers the software architecture. It is split into two core components: the \hyperref[fig:bild2]{Smart Sensing Library} and the \hyperref[fig:bild4]{Sensing Plugin}. The reason for this is that we have one component to get and read sensor data in a platform-independent way, while the other component represents most of the smart features like storage and filtering of values.
 
 \subsection{Smart Sensing Library}
-The Smart Sensing Library contains most of the features requested by the customer. It serves as the primary reference point to read, save and manipulate sensor data. Its design is inspired by the pipe and filter architecture. That way the customer can chain different filters on one dataset. The library is split into three main components: BufferManager, FilterTools, and API. The API has all public methods that can be used by the customer to subscribe to sensors and manipulate sensor data. The BufferManager is responsible for managing all sensor data streams and writing them into the database. It also contains a buffer cache for faster access times. The FilterTools are used to apply different filters to the sensor data.
+The Smart Sensing Library contains most of the features requested by the customer. It serves as the primary reference point to read, save and manipulate sensor data. Its design is inspired by the pipe and filter architecture. That way the customer can chain different filters on one dataset. The library is split into three main components: \hyperref[fig:bild7]{BufferManager}, \hyperref[fig:bild8]{FilterTools}, and \hyperref[fig:bild5]{API}. The API has all public methods that can be used by the customer to subscribe to sensors and manipulate sensor data. The \hyperref[fig:bild7]{BufferManager} is responsible for managing all sensor data streams and writing them into the database. It also contains a buffer cache for faster access times. The \hyperref[fig:bild8]{FilterTools} are used to apply different filters to the sensor data.
 
 %Explaination for Storage plugin is missing%
 \subsubsection{Version 1}
@@ -140,15 +140,15 @@ The Smart Sensing Library contains most of the features requested by the custome
 \caption{\label{fig:bild1}Version 1.0}
 \end{figure}
 \subsubsection{Version 1.1}
-An architectural change was made where the BufferManager and FilterTools were incorporated into a new component called IOManager.
-The reason for this change is that the coordination between the API, FilterTools, and BufferManager was not considered while creating the first iteration. The IOManager is now the primary communication point between the API and the underlying services.
+An architectural change was made where the \hyperref[fig:bild7]{BufferManager} and \hyperref[fig:bild8]{FilterTools} were incorporated into a new component called \hyperref[fig:bild5]{IOManager}.
+The reason for this change is that the coordination between the API, \hyperref[fig:bild8]{FilterTools}, and \hyperref[fig:bild7]{BufferManager} was not considered while creating the first iteration. The \hyperref[fig:bild5]{IOManager} is now the primary communication point between the API and the underlying services.
 \begin{figure}[ht]
 \includegraphics[width=1\textwidth]{Graphics/SmartSensingLibraryNew.png}
 \caption{\label{fig:bild2} Version 1.1}
 \end{figure}
 \newpage
 \subsection{Sensing Plugin}
-The Sensing Plugin is responsible for reading sensor data from iOS and Android devices and performing pre-processing on the data. This standardizes the data and allows the customer to apply various configurations. It's split into two main parts: the platform-specific code and the Dart code. The platform-specific code is responsible for reading sensor data from the device using factory methods provided by the corresponding operating system. These methods can then be called by the Dart code using method channels. In the Dart code, the data is unified (e.g. unit, decimal precision and axis orientation) so that the Smart Sensing Library can work with the data. The Sensor Manager has two main components. The Command Caller is responsible for delegating customer request like sensor subscription. The Sensor Event Subscriber handels the return of the subscriptions.
+The Sensing Plugin is responsible for reading sensor data from iOS and Android devices and performing pre-processing on the data. This standardizes the data and allows the customer to apply various configurations. It's split into two main parts: the platform-specific code and the Dart code. The platform-specific code is responsible for reading sensor data from the device using factory methods provided by the corresponding operating system. These methods can then be called by the Dart code using method channels. In the Dart code, the data is unified (e.g. unit, decimal precision and axis orientation) so that the \hyperref[fig:bild2]{Smart Sensing Library} can work with the data. The \hyperref[fig:bild9]{SensorManager} has two main components. The Command Caller is responsible for delegating customer request like sensor subscription. The Sensor Event Subscriber handels the return of the subscriptions.
 \subsubsection{Version 1}
 \begin{figure}[ht]
 \includegraphics[width=1\textwidth]{Graphics/SmartSensingPluginOld.png}
@@ -156,7 +156,7 @@ The Sensing Plugin is responsible for reading sensor data from iOS and Android d
 \end{figure}
 
 \subsubsection{Version 1.1}
-There was an architectural change made where the preprocessing is now part of the SensorManager. The reason for this change is that the preprocessor should be a component for the SensorManager to use. In the first iteration, the Preprocessor was seen as a single instance that would process all data, but it was later reconsidered that it would be more beneficial to use one preprocessor for each sensor. This allows for easier configuration of each sensor's output.
+There was an architectural change made where the pre-processing is now part of the \hyperref[fig:bild9]{SensorManager}. The reason for this change is that the \hyperref[fig:bild13]{preprocessor} should be a component for the \hyperref[fig:bild9]{SensorManager} to use. In the first iteration, the \hyperref[fig:bild13]{preprocessor} was seen as a single instance that would process all data, but it was later reconsidered that it would be more beneficial to use one \hyperref[fig:bild13]{preprocessor} for each sensor. This allows for easier configuration of each sensor's output.
 \begin{figure}[ht]
 \includegraphics[width=1\textwidth]{Graphics/SmartSensingPluginNew.png}
 \caption{\label{fig:bild4} Version 1.1}
@@ -167,7 +167,7 @@ There was an architectural change made where the preprocessing is now part of th
 This section covers the class diagrams for each component. Each diagram includes a description of the design choices made for that component.
 
 \subsection{IOManager}
-The IOManager component manages all functions related to data storage and transfer. It is the main component for the Smart Sensing Library.
+The IOManager component manages all functions related to data storage and transfer. It is the main component for the \hyperref[fig:bild2]{Smart Sensing Library}.
 \begin{figure}[ht]
 \centering
 \includesvg[width=1\textwidth]{Graphics/CIOManager}
@@ -176,7 +176,7 @@ The IOManager component manages all functions related to data storage and transf
 
 
 \subsubsection{IOManager}
-The IOManager is implemented using the Singleton pattern. The reason for this is that sensor data should be controlled by only one component, not multiple, to prevent multiple access to data streams. There is always only one IOManager present in the Smart Sensing Library. It controls all data operations related to sensor data.
+The IOManager is implemented using the Singleton pattern. The reason for this is that sensor data should be controlled by only one component, not multiple, to prevent multiple access to data streams. There is always only one IOManager present in the \hyperref[fig:bild2]{Smart Sensing Library}. It controls all data operations related to sensor data.
 \begin{figure}[ht]
 \centering
 \includesvg[width=.6\textwidth]{Graphics/IOManager}
@@ -184,7 +184,7 @@ The IOManager is implemented using the Singleton pattern. The reason for this is
 \end{figure}
 
 \subsubsection{BufferManager}
-The BufferManager class functions as a cache for currently used data. All new data is first saved into its buffer. If it becomes full, the IOManager takes its current content and saves it to the database if necessary. The Buffer Manager only contains sensor data that hasn't been modified by filters, this way the data can be reused by different functions.
+The BufferManager class functions as a cache for currently used data. All new data is first saved into its buffer. If it becomes full, the \hyperref[fig:bild5]{IOManager} takes its current content and saves it to the database if necessary. The Buffer Manager only contains sensor data that hasn't been modified by filters, this way the data can be reused by different functions.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/BufferManager}
@@ -193,7 +193,7 @@ The BufferManager class functions as a cache for currently used data. All new da
 
 \newpage
 \subsubsection{FilterTools}
-The FilterTools are used to modify the data from the BufferManager by deep-copying the needed values. After the initial copy, filters can be chained to create more complex queries. The FilterTools provide the only means for accessing the data.
+The FilterTools are used to modify the data from the \hyperref[fig:bild7]{BufferManager} by deep-copying the needed values. After the initial copy, filters can be chained to create more complex queries. The FilterTools provide the only means for accessing the data.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/FilterTools}
@@ -208,7 +208,7 @@ The SensorManager component serves as the interface between Dart code and platfo
 \includesvg[width=1\textwidth]{Graphics/CSensorManager}
 \caption{\label{fig:bild9} SensorManager Component}
 \end{figure}
-
+\newpage
 \subsubsection{SensorManager}
 The SensorManager class is the central control unit for the component and follows the singleton design pattern. It manages all aspects related to subscribing and unsubscribing to sensors and delegates these requests to the platform-specific code, which then returns the corresponding responses.
 \begin{figure}[ht]
@@ -224,6 +224,7 @@ This class is representing a sensor.
 \includesvg[width=0.6\textwidth]{Graphics/Sensor}
 \caption{\label{fig:bild11} Sensor}
 \end{figure}
+\newpage
 
 \subsubsection{SensorPropertyValidator}
 The SensorPropertyValidator class ensures that the specified precision and time interval are maintained.
@@ -232,57 +233,57 @@ The SensorPropertyValidator class ensures that the specified precision and time 
 \includesvg[width=0.6\textwidth]{Graphics/SensorPropertyValidator}
 \caption{\label{fig:bild12} SensorPropertyValidator}
 \end{figure}
-\newpage
+
 
 \subsubsection{Preprocessor}
-The Peprocessor class ensures that Android and iOS return consistent value types. It can be configured with the SensorConfig.
+The Peprocessor class ensures that Android and iOS return consistent value types. It can be configured with the \hyperref[fig:bild14]{SensorConfig}.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/PreProcessor}
 \caption{\label{fig:bild13} Preprocessor}
 \end{figure}
-
+\newpage
 \subsubsection{SensorConfig}
-The SensorConfig class holds various configurations for the preprocessor, including the time interval, precision, and target unit.
+The SensorConfig class holds various configurations for the \hyperref[fig:bild13]{preprocessor}, including the time interval, precision, and target unit.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/SensorConfig}
 \caption{\label{fig:bild14} SensorConfig}
 \end{figure}
 
-\newpage
+
 \subsubsection{SensorDataSubscriber}
-The SensorDataSubscriber class manages multiple subscriptions and is utilized by the SensorManager class.
+The SensorDataSubscriber class manages multiple subscriptions and is utilized by the \hyperref[fig:bild9]{SensorManager} class.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/DataSubscriber}
-\caption{\label{fig:bild15} Preprocessor}
+\caption{\label{fig:bild15} SensorDataSubscriber}
 \end{figure}
-
+\newpage
 \subsubsection{SensorData}
 The SensorData class represents the data received from a sensor and serves as the data model for the document-based database.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/SensorData}
-\caption{\label{fig:bild16} Preprocessor}
+\caption{\label{fig:bild16} SensorData}
 \end{figure}
 
-\newpage
+
 \section{Processes}
 \subsection{Sequence Diagrams}
 This section contains sequence diagrams for getting and modifying data.
-\subsection{Starting a Sensor}
+\subsubsection{Starting a Sensor}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{Graphics/SeqStart.png}
+\includegraphics[width=0.7\textwidth]{Graphics/SeqStart.png}
 \caption{\label{fig:bild17} Starting sequence diagram}
 \end{figure}
 
 \newpage
-\subsection{Getting Data via a filter}
+\subsubsection{Getting Data via a filter}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{Graphics/SeqFilter.png}
+\includegraphics[width=0.7\textwidth]{Graphics/SeqFilter.png}
 \caption{\label{fig:bild18} Filtering sequence diagram}
 \end{figure}
 \end{document}
