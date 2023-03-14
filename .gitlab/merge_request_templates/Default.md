@@ -3,8 +3,7 @@
 
 ## Make sure that you've checked the box below before you submit MR:
 
-- [ ] Documentation (if required)
-
+- [ ] Rule conforming documented (if required)*
 
 ## Which platform/language
 
@@ -26,4 +25,5 @@
 /label ~"stage::in review"
 
 
+<sub>For more information check out the wiki : https://gitlab.uni-ulm.de/groups/se-anwendungsprojekt-22-23/-/wikis/Convention#documentation </sub>
 
