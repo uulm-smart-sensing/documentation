@@ -57,8 +57,26 @@ To support a new sensor on the Android platform, first check whether it is possi
 2. The constructor should take two parameters: a `SensorManager` `sensorManager` and a `Long` `timeIntervalInMicroseconds`.
 3. The class must be derived from `SensorStreamHandler`. `sensorManager` and `timeIntervalInMicroseconds` can be passed to the base constructor.
 4. For `sensorId` pass the appropriate `Sensor.TYPE_*` constant and for `unit` pass the appropriate `Unit` enum value.
-5. If you have added a sensor that is not already listed in [sensor_information.md](sensor_information.md) or if something about the information has changed, update the document.
-6. Now you are all set up on the Android side.
+5. In the end, the file will look like this:
+
+    ```kotlin
+    package de.uniulm.sensing_plugin.sensors
+
+    ...
+
+    class NewSensor(
+        sensorManager: SensorManager,
+        timeIntervalInMicroseconds: Long
+    ) : SensorStreamHandler(
+        sensorManager,
+        Sensor.TYPE_NEW_SENSOR,
+        timeIntervalInMicroseconds,
+        Unit.NEW_UNIT
+    )
+    ```
+
+6. If you have added a sensor that is not already listed in [sensor_information.md](sensor_information.md) or if something about the information has changed, update the document.
+7. Now you are all set up on the Android side.
 
 ### iOS
 
