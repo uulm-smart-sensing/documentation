@@ -1,10 +1,53 @@
 # Sensors
 
-<!-- TODO: Add description how to add a sensor on each platform -->
-
 ## Guideline on how to add support for a new sensor
 
+When adding a new sensor to our `sensing_plugin` the following steps should be followed. It's best to do all of the steps in the [Flutter](#flutter) section first.
+
 ### Flutter
+
+1. Add a new value to the `SensorId` enum in [api_sensor_manager.dart](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin/-/blob/main/pigeons/api_sensor_manager.dart).
+
+    ```dart
+    enum SensorId {
+        ...
+        newSensor,
+    }
+    ```
+
+2. If the unit of the values that the sensor produces is not already present, add the unit to the `Unit` enum in [api_sensor_manager.dart](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin/-/blob/main/pigeons/api_sensor_manager.dart).
+
+    ```dart
+    enum Unit {
+        ...
+        // New unit category
+        newUnit,
+    }
+    ```
+
+3. Consider adding units from the same category to which the values can be converted to.
+4. If a new unit is added, an according conversion method must be added in [unit_converter.dart](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin/-/blob/main/lib/src/preprocessing/unit_converter.dart).
+
+    ```dart
+    final unitConversionMethods = <Unit, double Function(double, Unit, Unit)>{
+        ...
+        Unit.newUnit: _convertNewUnitCategory,
+    };
+
+    ...
+
+    double _convertNewUnitCategory(
+        double value,
+        Unit sourceUnit,
+        Unit targetUnit,
+    ) {
+        ...
+    }
+    ```
+
+5. The best way to convert units within a category is to convert each source unit to a single unit and then convert that unit to the target unit.
+6. Don't forget to add conversion tests in [unit_converter_test.dart](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin/-/blob/main/test/preprocessing/unit_converter_test.dart).
+7. Now you are all set up to implement the sensors on Android and iOS.
 
 ### Android
 
