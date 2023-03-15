@@ -2,7 +2,7 @@
 
 ## Guideline on how to add support for a new sensor
 
-When adding a new sensor to our `sensing_plugin` the following steps should be followed. It's best to do all of the steps in the [Flutter](#flutter) section first.
+When adding a new sensor to our `sensing_plugin` the following steps should be followed. It's best to do all of the steps in the [Flutter](#flutter) section first. Once this is done, the `run_pigeon` script must be run to generate the changes for the platforms.
 
 ### Flutter
 
