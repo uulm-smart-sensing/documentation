@@ -51,6 +51,15 @@ When adding a new sensor to our `sensing_plugin` the following steps should be f
 
 ### Android
 
+To support a new sensor on the Android platform, first check whether it is possible to access this data and what permissions are necessary.
+
+1. Add a new Kotlin class to the [sensors package](https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin/-/tree/main/android/src/main/kotlin/de/uniulm/sensing_plugin/sensors) and name it after the new sensor (`NewSensor.kt`).
+2. The constructor should take two parameters: a `SensorManager` `sensorManager` and a `Long` `timeIntervalInMicroseconds`.
+3. The class must be derived from `SensorStreamHandler`. `sensorManager` and `timeIntervalInMicroseconds` can be passed to the base constructor.
+4. For `sensorId` pass the appropriate `Sensor.TYPE_*` constant and for `unit` pass the appropriate `Unit` enum value.
+5. If you have added a sensor that is not already listed in [sensor_information.md](sensor_information.md) or if something about the information has changed, update the document.
+6. Now you are all set up on the Android side.
+
 ### iOS
 
 To support a new sensor on the iOS platform, first check whether it is possible to access this data and what permissions and swift packages are necessary.
