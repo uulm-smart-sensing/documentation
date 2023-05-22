@@ -11,6 +11,8 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
+\usepackage{graphicx}
+
 
 \renewcommand{\baselinestretch}{1.1}
 \setlength{\parindent}{0pt}
@@ -229,13 +231,9 @@ The library is split into two core components: the Smart Sensing Library and the
 
 The Smart Sensing Library contains most of the functions required by the customer. It serves as an access point for reading sensor data and was designed according to the principle of pipe-and-filter architecture. This gives the customer the ability to apply different filters to a data set and link them together. The library is divided into two main components: the IOManager and the API.
 
-The API contains all the public methods that can be used by the customer to subscribe to sensors and retrieve filtered sensor data. The IOManager is responsible for managing all sensor data streams and writing them to the database. It also includes a buffer manager that speeds up access to the data. The Smart Sensing Library contains most of the functions required by the customer. It serves as an access point for reading sensor data and was designed according to the principle of pipe-and-filter architecture. This gives the customer the ability to apply different filters to a data set and link them together. The library is divided into two main components: the IOManager and the API. The IOManager in turn consists of the Buffer Manager and the Filter Tools.
+The API contains all the public methods that can be used by the customer to subscribe to sensors and retrieve filtered sensor data. The IOManager is responsible for managing all sensor data streams and writing them to the database. It also includes a buffer manager that speeds up access to the data. The Smart Sensing Library contains most of the functions required by the customer. It serves as an access point for reading sensor data and was designed according to the principle of pipe-and-filter architecture. This gives the customer the ability to apply different filters to a data set and link them together. 
 
-The API contains all the public methods that can be used by the customer to subscribe to sensors and retrieve filtered sensor data. The IOManager is responsible for managing all sensor data streams and writing them to the database. It also includes a buffer memory that speeds up access to the data. Filter tools are used in the IOManager to apply various filters to the sensor data. These components were integrated into the IOManager as part of an architectural change.
 
-The Sensing Plugin is responsible for reading sensor data from iOS and Android devices and pre-processing the data. This standardizes the data and allows the customer to apply different configurations. The Sensing Pluginconsists of two main parts: the platform-specific code and the Dart code. The platform-specific code is responsible for reading sensor data from the device using factory methods of the corresponding operating system. These methods can then be called from the dart code using method channels. In the Dart code, the data is unified, for example, in terms of unit, decimal precision, and axis orientation, so that the Smart Sensing Library can work with the data.
-
-Furthermore, there is a main component in the Sensing Plugin the SensorManager. The SensorManager does not call the native platforms (iOS and Android) directly. Instead, it requests a "delegator" from the SensorManagerApiPlatform.instance. The default instance is the SensorManagerPigeonApi, which uses SensorManagerApi (automatically generated pigeon code) to call the sensor managers on the native platforms.
 
 \subsection{Api Methods}
 We used Pigeon as our Api interface. Pigeon is a code generator tool that simplifies and makes more secure the communication between Flutter and the native platform.
@@ -269,49 +267,6 @@ Furthermore, you will now see a detailed explanation of the available API method
 
     You can use these methods to access sensor data and use it in your application.
 
-\subsection{Example}
-\begin{verbatim}
-    Future<SensorTaskResult> startSensorTracking({
-    required SensorId id,
-    required SensorConfig config,
-  }) async {
-    var configValidationResult = validateSensorConfig(id, config);
-    if (configValidationResult != SensorTaskResult.success) {
-      return configValidationResult;
-    }
-
-    if (_usedSensors.contains(id)) {
-      return SensorTaskResult.alreadyTrackingSensor;
-    }
-
-    if (!await isSensorAvailable(id)) {
-      return SensorTaskResult.sensorNotAvailable;
-    }
-
-    var result = await SensorManagerApiPlatform.instance
-        .startSensorTracking(id: id, config: config);
-
-    if (result == SensorTaskResult.success) {
-      var configWrapper = SensorConfigWrapper(config);
-      // Creates an eventChannel to get the sensorData from native side and
-      // saves it in _sensorDataStreams
-      var sensorName = id.name;
-      var eventChannel = EventChannel('sensors/$sensorName');
-      var eventStream = eventChannel.receiveBroadcastStream().map(
-            (data) => processData(
-              InternalSensorData.decode(data as Object),
-              configWrapper,
-            ),
-          );
-      _sensorDataStreams[id] = _StreamPair(eventStream);
-      _usedSensors.add(id);
-      _sensorIdToSensorConfig[id] = configWrapper;
-    }
-
-    return result;
-  }
-\end{verbatim}
-    The method `startSensorTracking` starts the tracking of a sensor with the passed id. If the tracking is started successfully, the passed config is stored and used to configure the time interval and how the sensor data is preprocessed.
 
 \section{Demo App}
 
@@ -324,9 +279,27 @@ Furthermore, you will now see a detailed explanation of the available API method
 \subsection{Features of the demo app}
     The demo application offers a wide range of functions to facilitate the use and interaction with the sensors of your device.The various functions are explained in detail below: 
 \begin{itemize}
-    \item[1]. The application is able to retrieve information on the smartphone and display it. This includes data such as model name, operating system version, processor information and much more.If for some reason it is not possible to retrieve this information, a notification or error message is displayed.This allows users to gain detailed insight into the technical aspects of their device.  
-    \item[2]. They have the possibility to select a specific sensor and to track the measurements of this sensor.This allows users to monitor current sensor readings in real time.The application ensures that data from the selected sensor is continuously displayed.This allows users to monitor, for example, the gyroscope, accelerometer, or magnetometer.  
-    \item[3]. In addition to monitoring, the application provides the ability to customize the properties of a particular sensor.This includes changing the unit of time interval accuracy for data acquisition. For example, you can change the sensor unit from  m/s\textsuperscript{2} to gal or from kelvin to celsius. These adjustments allow users to customize the settings to their specific needs. 
+    
+    \item[1.]
+    
+    \begin{minipage}[t]{0.6\textwidth}
+        The application is able to retrieve information on the smartphone and display it. This includes data such as model name, operating system version, processor information and much more.If for some reason it is not possible to retrieve this information, a notification or error message is displayed.This allows users to gain detailed insight into the technical aspects of their device. 
+     \item[2.] They have the possibility to select a specific sensor and to track the measurements of this sensor.This allows users to monitor current sensor readings in real time.The application ensures that data from the selected sensor is continuously displayed.This allows users to monitor, for example, the gyroscope, accelerometer, or magnetometer.  
+    \item[3.] In addition to monitoring, the application provides the ability to customize the properties of a particular sensor.This includes changing the unit of time interval accuracy for data acquisition. For example, you can change the sensor unit from  m/s\textsuperscript{2} to gal or from kelvin to celsius. These adjustments allow users to customize the settings to their specific needs. 
+    \end{minipage} 
+    \hfill
+     \begin{minipage}[t]{0.3\textwidth}
+        \vspace{-\baselineskip}
+        \includegraphics[width=\textwidth]{info.jpg}
+    \end{minipage}
+   
+
+   \begin{minipage}[t]{0.3\textwidth}
+    \vspace{-0.5\baselineskip}
+    \includegraphics[width=\textwidth]{historic_view_page.jpg}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[t]{0.6\textwidth}
     \item[4]
     If you want to stop tracking a specific sensor, you can select the corresponding option in the app.This will stop data collection for the sensor and update the readings display accordingly.This gives users the ability to only monitor sensors that are relevant to their current task.
     \item[5]
@@ -334,25 +307,29 @@ Furthermore, you will now see a detailed explanation of the available API method
     The search function helps users find the sensor they want from the list of available sensors on their device.This saves time and navigates through the different sensors.
     \item[6]
     By selecting a specific sensor in the app, users can view live data from that sensor. This allows them to monitor current readings in real life and see any changes or trends. For example, you can use to view current temperatur and check current acceleration values. 
+    \end{minipage}
     \item[7]
     In addition to viewing live data, users can also access processed or historical data from a specific individual.This allows them to analyze and learn from previous and processed measurements.For example, they can view graphs based on the collected data or view previous measurements to identify trends or patterns.
 \end{itemize}
-    These advanced features provide application users with a complete way to interact with their application's sensors. They allow users to collect sensor data, adjust sensor parameters, and view them in real time. With this application, you can use all of your smartphone's power sensors and make the most of your device's features.
+    These advanced features provide application users with a complete way to interact with their application's sensors.They allow users to collect sensor data, adjust sensor parameters, and view them in real time.With this application, you can use all of your smartphone's power sensors and make the most of your device's features.
 \subsection{Usage of the library in the demo app}
     The demo app used the Library extensively to collect, filter, and store sensor data. Here are the most important information about it:
     \begin{itemize}
-        \item[1] Sensing Plugin as Submodule
+        \item[1]Sensing Plugin as Submodule
         
         The Sensing Plugin, which is responsible for reading sensor data and pre-processing, was integrated into the demo app as a submodule. It establishes the connection to the iOS and Android devices and enables the reading of sensor data. For testing purposes, a FakeSensorManager was used to serve as a replacement for the actual SensorManager and simulate sensor data being read from the devices.
         \item[2] Implementation of the IO Manager
-        
         The IO Manager was implemented as the main component to provide access to sensor data and manage its storage. The IO Manager integrates the appropriate filter tools and buffer manager to process and store sensor data. It serves as a central access point for all other components of the library.
+
         \item[3] Filter Tools and Buffer Manager
 
         The Filter Tools have been implemented to apply various filters to the sensor data. They allow the developer to manipulate the sensor data and extract specific values. The Buffer Manager is responsible for managing the sensor data streams and writing them to the database. It also contains a buffer memory to speed up access to the data.
         \item[4] The IO Manager as the main access point
 
         The IO Manager represents the main access point to obtain and store sensor data. All other components of the library, including the Sensing Plugin and Filter Tools, are used and managed by the IO Manager. This ensures consistent and efficient processing of sensor data.
+      
+        
+  
     \end{itemize}
 By using the library, specifically the Sensing Plugin, IO Manager and Filter Tools, the demo app was able to acquire, filter and store sensor data. This allowed the developer to create a robust and feature-rich application specific to the requirements.
 \subsection{Demo App example}
@@ -405,8 +382,8 @@ For more information about the repository, documentation, etc.:
 
 \textbf{Repository}
     \begin{itemize}
-        \item \href{https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/smart-sensing-librar}{Smart Sensing Library}
-        \item \href{https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-pluginr}{Sensing Plugin}
+        \item \href{https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/smart-sensing-library}{Smart Sensing Library}
+        \item \href{https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23/sensing-plugin}{Sensing Plugin}
     \end{itemize}
  \textbf{Mockup}   
     \begin{itemize}
