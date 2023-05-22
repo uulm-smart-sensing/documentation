@@ -80,3 +80,26 @@ SDD:commit:
       git add -f "Software design document/design_doc.pdf"
       git commit -m "docs: commit document"
       git push ci HEAD:$CI_COMMIT_REF_NAME
+
+UserManual:
+  extends: .latex
+  script:
+    - |
+      cd "User manual"
+      nix-env -i inkscape
+      latexmk -pdf -shell-escape
+  artifacts:
+    expose_as: "User manual"
+    paths:
+      - "User manual/user_manual.pdf"
+
+UserManual:commit:
+  extends: .latex-commit
+  needs:
+    - job: UserManual
+      artifacts: true
+  script:
+    - |
+      git add -f "User manual/user_manual.pdf"
+      git commit -m "docs: commit document"
+      git push ci HEAD:$CI_COMMIT_REF_NAME
