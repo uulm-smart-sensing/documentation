@@ -140,13 +140,16 @@ Installation instructions for the further development of the Smart Sensing Libra
         \begin{itemize}
         \item Open the command line or a suitable terminal on your computer.
         \item Navigate to the desired location for the project.
-        \item Clone the project repository from version control (e.g., Git) using the following command:
+        \item Clone the project repository from version control (e.g. Git) using the following command:
 \begin{verbatim}
 git clone https://gitlab.uni-ulm.de/se-anwendungsprojekt-22-23
 /smart-sensing-library.git
 \end{verbatim}
         \end{itemize}
-    \item Install dependencies::
+    \item Install dependencies
+\footnote{
+Note: Please ensure you have a stable internet connection to successfully download the dependencies during installation. 
+Make sure all required SDKs and tools are up to date to ensure a smooth installation process.}:
         \begin{itemize}
         \item Navigate to the root directory of the Flutter project.
         \item Run the following command to install the required dependencies:
@@ -169,62 +172,15 @@ bash bash setup.sh
         \end{itemize}
     \item Start the application:
         \begin{itemize}
-        \item Open the command line or terminal and navigate to the root directory of the Flutter project.
+        \item Open the command line or terminal and navigate to the \textit{example} directory of the Flutter project.
         \item Execute the following command to start the Flutter application:
 \begin{verbatim}
  flutter run
 \end{verbatim}        
         \end{itemize}
-
-\begin{tiny}
-Note: Please ensure you have a stable internet connection to successfully download the dependencies during installation. 
-Make sure all required SDKs and tools are up to date to ensure a smooth installation process.
-\end{tiny}        
+        
 
 \end{itemize}
-
-\subsection{Working on Native Side}
-    \subsubsection{Working on Android}
-    We use Android Studio to write code for our Android sensor implementations. In order for Android Studio to recognize all dependencies, it is mandatory to open the ./example/android/ directory with Android Studio. If any other directory is opened, the dependencies won't be recognized.
-    
-    \textbf{Linting}
-
-    We use \href{https://pinterest.github.io/ktlint/}{Ktlint} to lint our Kotlin code.
-    For a simple check, run:
-    \begin{verbatim}
-     bash
-        ./gradlew ktlintCheck
-    \end{verbatim}    
-    
-    For Ktlint to format the code automatically, run:
-    \begin{verbatim}
-    bash
-    ./gradlew ktlintFormat
-    \end{verbatim}  
-     \subsubsection{Working on Android}
-    For the development of the iOS platform code, which is written in Swift, we use Xcode.
-    In order for Xcode to recognize all dependencies and correctly set up the project structure, it is mandatory to open the `./example/ios/` directory with Xcode.
-    
-    \textbf{Linting}
-
-   To lint the Swift code we use \href {https://github.com/realm/SwiftLin}{[Swiftlint} (see \href{https://github.com/realm/SwiftLint#installation}{here} for installation guide).
-   
-If *Swiftlint* is installed successfully, you can manually check the Swift files by running
-    For a simple check, run:
-    \begin{verbatim}
-     bash
-        swiftlint
-    \end{verbatim}    
-    
-    and correct fixable linting issues with
-    \begin{verbatim}
-    bash
-    swiftlint --fix
-    \end{verbatim}  
-    
-For further configuration of the swiftlint command, it is recommended to use a .swiftlint.yml file, which already exists in this repository and can be extended.
-
-If you want Swiftlint to be automatically run by Xcode, you need to set up a new "Run script phase" in the "Build phases" of your target and execute the swiftlint command there, as described \href{https://github.com/realm/SwiftLint#xcode}{here}.
 
 \subsection{Features}
 The library is split into two core components: the Smart Sensing Library and the Sensing Plugin
@@ -277,15 +233,15 @@ Furthermore, you will now see a detailed explanation of the available API method
     The demo app follows a specific structure to provide a clear and organized user interface. It consists of various screens, navigation elements, and controls that allow developers to interactively explore the functionalities of the solution. The structure of the demo app facilitates navigation and access to the various features and options.
 
 \subsection{Features of the demo app}
-    The demo application offers a wide range of functions to facilitate the use and interaction with the sensors of your device.The various functions are explained in detail below: 
+    The demo application offers a wide range of functions to facilitate the use and interaction with the sensors of your device. The various functions are explained in detail below: 
 \begin{itemize}
     
     \item[1.]
     
     \begin{minipage}[t]{0.6\textwidth}
-        The application is able to retrieve information on the smartphone and display it. This includes data such as model name, operating system version, processor information and much more.If for some reason it is not possible to retrieve this information, a notification or error message is displayed.This allows users to gain detailed insight into the technical aspects of their device. 
-     \item[2.] They have the possibility to select a specific sensor and to track the measurements of this sensor.This allows users to monitor current sensor readings in real time.The application ensures that data from the selected sensor is continuously displayed.This allows users to monitor, for example, the gyroscope, accelerometer, or magnetometer.  
-    \item[3.] In addition to monitoring, the application provides the ability to customize the properties of a particular sensor.This includes changing the unit of time interval accuracy for data acquisition. For example, you can change the sensor unit from  m/s\textsuperscript{2} to gal or from kelvin to celsius. These adjustments allow users to customize the settings to their specific needs. 
+        The application is able to retrieve information on the smartphone and display it. This includes data such as model name, operating system version or free storage. If for some reason it is not possible to retrieve this information a notification or error message is displayed. This allows users to gain detailed insight into the technical aspects of their device. 
+     \item[2.] They have the possibility to select a specific sensor and to track the measurements of this sensor. This allows users to monitor current sensor readings in real time. The application ensures that data from the selected sensor is continuously displayed.
+    \item[3.] In addition to monitoring, the application provides the ability to customize the properties of a particular sensor. This includes changing the unit, time interval or precision for data acquisition. For example, you can change the sensor unit from $\frac{m}{s^2}$ to \textit{gal} or from \textit{kelvin} to \textit{celsius}. These adjustments allow users to customize the settings to their specific needs. 
     \end{minipage} 
     \hfill
      \begin{minipage}[t]{0.3\textwidth}
@@ -301,19 +257,20 @@ Furthermore, you will now see a detailed explanation of the available API method
     \hfill
     \begin{minipage}[t]{0.6\textwidth}
     \item[4]
-    If you want to stop tracking a specific sensor, you can select the corresponding option in the app.This will stop data collection for the sensor and update the readings display accordingly.This gives users the ability to only monitor sensors that are relevant to their current task.
+    If you want to stop tracking a specific sensor, you can select the corresponding option in the app. This will stop data collection for the sensor and update the readings display accordingly. Thus the users are able to only monitor sensors that are relevant to their current task.
     \item[5]
     The app also makes it easier to find a specific sensor. You can search for a sensor by entering its name or you can favorite the sensor and see it easier
     The search function helps users find the sensor they want from the list of available sensors on their device.This saves time and navigates through the different sensors.
     \item[6]
-    By selecting a specific sensor in the app, users can view live data from that sensor. This allows them to monitor current readings in real life and see any changes or trends. For example, you can use to view current temperatur and check current acceleration values. 
+    By selecting a specific sensor in the app, users can view live data from that sensor. This allows them to monitor current readings in real life and see any changes or trends. For example, you can use to view current pressure and check current acceleration values. 
     \end{minipage}
     \item[7]
-    In addition to viewing live data, users can also access processed or historical data from a specific individual.This allows them to analyze and learn from previous and processed measurements.For example, they can view graphs based on the collected data or view previous measurements to identify trends or patterns.
+    In addition to viewing live data, users can also access processed or historical data from a specific sensor. This allows them to analyze and learn from previous and processed measurements. For example, they can view graphs based on the collected data or view previous measurements to identify trends or patterns.
 \end{itemize}
-    These advanced features provide application users with a complete way to interact with their application's sensors.They allow users to collect sensor data, adjust sensor parameters, and view them in real time.With this application, you can use all of your smartphone's power sensors and make the most of your device's features.
+    These advanced features provide application users with a complete way to interact with their application's sensors. They allow users to collect sensor data, adjust sensor parameters, and view them in real time.
+    
 \subsection{Usage of the library in the demo app}
-    The demo app used the Library extensively to collect, filter, and store sensor data. Here are the most important information about it:
+    The demo app used the library extensively to collect, filter, and store sensor data. Here are the most important information about it:
     \begin{itemize}
         \item[1]Sensing Plugin as Submodule
         
