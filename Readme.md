@@ -5,11 +5,7 @@
   <a>
     <img src="https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png" alt="Logo" width="80" height="80">
   </a>
-<h3 align="center">Smart Sensing Library</h3>
-<a href="https://gitlab.uni-ulm.de/groups/se-anwendungsprojekt-22-23/-/wikis/home"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    [View Demo](./example/)
+<h3 align="center">Smart Sensing Library Dokumentation </h3>
 
 
 </div>
@@ -19,19 +15,21 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#user-manual">User Manual</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#software-requirement">Software Requirement</a></li>
       </ul>
     </li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#development-setup">Development Setup</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Authors</a></li>
+    <li><a href="#software-design">Software Design</a></li>
+    <li><a href="#user-story-map">User Story Map</a></li>
+    <li><a href="#requirements-engineering">Requirements Engineering</a></li>
+    <li><a href="#protocols">Protocols</a></li>
+    <li><a href="#mockup">Mockup</a></li>
+    <li><a href="#sensors"> Sensors</a></li>
   </ol>
 </details>
 
-# User Manual
+## User Manual
 
 The User Manual is a guide to help users use the project effectively. It contains important information on the following topics:
 
@@ -39,28 +37,28 @@ The User Manual is a guide to help users use the project effectively. It contain
 
 2. Demo app: The demo app serves as a sample application to demonstrate the functionality of the library. You will receive information on the purpose of the Demo App, the general structure, the available functions and the integration of the library into the app. You will also find a practical example that illustrates the use of the library in the Demo App.
 
-For more information on software design, see the [User Manual](./User%manual/user_manual.tex).
+For more information on software design, see the [User Manual](./User%20manual/user_manual.tex).
 
-# Software Requirement
+## Software Requirement
 
 The Software Requirement section includes the requirements and specifications for the project. Both the functional and non-functional requirements are defined here. \
 The aim is to ensure that the project fulfils the desired functions and meets the requirements of the users.
 
 For more information on software requirements, see the [Software Requirement Document](./Software%20requirements%20document/SRD.pdf).
 
-# Software Design
+## Software Design
 
 The section "Software Design" describes the architecture and structure of the software. The various components, their interactions and the overall structure are explained here. The software design document provides a detailed insight into the implementation of the software.
 
-For more information on software design, see the [Software Design Document](./Software%design%document/design_doc.pdf).
+For more information on software design, see the [Software Design Document](./Software%20design%20document/design_doc.pdf).
 
-# User Story Map
+## User Story Map
 
 The user story map is a visual representation of the requirements and functions from the user's point of view. It shows the different user stories and their prioritisation. The User Story Map helps to get a comprehensive overview of the requirements and their relationships to each other.
 
-For more information on the User Story Map, see the [User Story Map document](./User%Story%Map/User%Story%Map.pdf).
+For more information on the User Story Map, see the [User Story Map document](./User%20Story%20Map/User%20Story%20Map.pdf).
 
-# Requirements Engineering
+## Requirements Engineering
 
 Requirement engineering refers to the process of identifying, capturing and managing requirements. \
 In this document you will find detailed information on two aspects of requirements engineering:
@@ -71,9 +69,9 @@ In this document you will find detailed information on two aspects of requiremen
 2. Decisions about adding or removing user stories or features: \
     The document also covers the decision making behind adding or removing User Stories or Features. It explains what factors are considered when evaluating and prioritising requirements and how decisions are made to make the best use of project scope and resources.
 
-For more information on requirements engineering, see the [requirements engineering document](./Requirements%Engineering/re_doc.pdf).
+For more information on requirements engineering, see the [requirements engineering document](./Requirements%20Engineering/re_doc.pdf).
 
-# Protocols
+## Protocols
 
 The protocols provide records of past meetings, sessions or discussions in the project. They serve as a reference for decisions made, issues discussed and project progress.
 Sie können auf die folgenden Protokolle zugreifen:
@@ -87,13 +85,13 @@ Sie können auf die folgenden Protokolle zugreifen:
 - [Protokoll vom 30. Oktober 2022](Protocols/2022_10_30)
 - [Protokoll vom 4. November 2022](Protocols/2022_11_04)
 
-# Mockup
+## Mockup
 
 The mockup is a graphic representation of the user interface or design of the project. It gives a visual idea of what the final product will look like.
 
 For more information on the mockup, see the [mockup document](./Mockup/Pages.pdf).
 
-# Sensors
+## Sensors
 
 The Sensors section describes the different sensors used in the project. You will get information about the different types of sensors, their functions, properties and their implementation in the project. 
 
