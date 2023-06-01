@@ -103,3 +103,26 @@ UserManual:commit:
       git add -f "User manual/user_manual.pdf"
       git commit -m "docs: commit document"
       git push ci HEAD:$CI_COMMIT_REF_NAME
+
+RED:
+  extends: .latex
+  script:
+    - |
+      cd "Requirements engineering document"
+      nix-env -i inkscape
+      latexmk -pdf -shell-escape
+  artifacts:
+    expose_as: "RED"
+    paths:
+      - "Requirements engineering document/re.pdf"
+
+RED:commit:
+  extends: .latex-commit
+  needs:
+    - job: RED
+      artifacts: true
+  script:
+    - |
+      git add -f "Requirements engineering document/re.pdf"
+      git commit -m "docs: commit document"
+      git push ci HEAD:$CI_COMMIT_REF_NAME
