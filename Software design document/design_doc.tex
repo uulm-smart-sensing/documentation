@@ -129,11 +129,11 @@ Representative: & #4 \\
 \label{sec:Intro}
 This document lists all the architectures for the Flutter Smart Sensing Library. Each diagram includes a description of why it was designed in that way and why certain changes were necessary. Every change is listed in this document.
 \section{Software Architecture}
-This section covers the software architecture. It is split into two core components: the \hyperref[sec:SmartSensingLibrary]{Smart Sensing Library} and the \hyperref[sec:SensingPlugin]{Sensing Plugin}. The reason for this is that we have one component to get and read sensor data in a platform-independent way, while the other component represents most of the smart features like storage and filtering of values.
+This section covers the software architecture. It is split into two core components: the \hyperref[sec:SmartSensingLibrary]{Smart Sensing Library} and the \hyperref[sec:SensingPlugin]{Sensing Plugin}. The reason for this is that we have one component to read and standardize sensor data in a platform-independent way, while the other component represents most of the smart features like storage and filtering of values.
 
 \subsection{Smart Sensing Library}
 \label{sec:SmartSensingLibrary}
-The Smart Sensing Library contains most of the features requested by the customer. It serves as the primary reference point to read, save and manipulate sensor data. Its design is inspired by the pipe and filter architecture. That way the customer can chain different filters on one dataset. The library is split into three main components: \hyperref[sec:BufferManager]{BufferManager}, \hyperref[sec:FilterTools]{FilterTools}, and API. The API has all public methods that can be used by the customer to subscribe to sensors and manipulate sensor data. The \hyperref[sec:BufferManager]{BufferManager} is responsible for managing all sensor data streams and writing them into the database. It also contains a buffer cache for faster access times. The \hyperref[sec:FilterTools]{FilterTools} are used to apply different filters to the sensor data.
+The Smart Sensing Library contains most of the features requested by the customer. It serves as the access point to read sensor data. Its design is inspired by the pipe and filter architecture. That way the customer can chain different filters on one dataset. The library is split into three main components: \hyperref[sec:BufferManager]{BufferManager}, \hyperref[sec:FilterTools]{FilterTools}, and API. The API has all public methods that can be used by the customer to subscribe to sensors and retrieve filtered sensor data. The \hyperref[sec:BufferManager]{BufferManager} is responsible for managing all sensor data streams and writing them into the database. It also contains a buffer cache for faster access times. The \hyperref[sec:FilterTools]{FilterTools} are used to apply different filters to the sensor data.
 
 %Explaination for Storage plugin is missing%
 \subsubsection{Version 1}
@@ -312,7 +312,7 @@ The Import/Export module was added with Verison 1.1. It added the functionality 
 
 \subsection{SensorManager}
 \label{sec:CSensorManager}
-The SensorManager component serves as the interface between Dart code and platform-specific code. It offers the ability to subscribe and unsubscribe to sensor data streams, which implements the pub/sub pattern. It also preprocesses the data to ensure that Android and iOS return consistent value types. The preprocessing can be configured as needed.
+The SensorManager component serves as the interface between Dart code and platform-specific code. It offers the ability to subscribe and unsubscribe to sensor data streams, which implements the pub/sub pattern. It also preprocesses the data to ensure that Android and iOS return consistent target units. The preprocessing can be configured as needed.
 \begin{figure}[ht]
 \centering
 \includesvg[width=1\textwidth]{Graphics/CSensorManager}
