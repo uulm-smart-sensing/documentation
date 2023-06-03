@@ -93,6 +93,4 @@ For more information on the mockup, see the [mockup document](./Mockup/Pages.pdf
 
 The "Sensors" section describes the different sensors used in the project. You will get information about the different types of sensors, their functions, properties and their implementation in the project. 
 
-This section provides an overview of how the sensors are used and how they can be integrated into the application to enable certain functions or measurements.
-
 For more information about the sensors, see the [Sensors document](./Sensors/).
