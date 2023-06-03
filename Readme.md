@@ -31,7 +31,7 @@
 
 ## User Manual
 
-The User Manual is a guide to help users use the project effectively. It contains important information on the following topics:
+The User Manual is a guide to help users use the library and demo app effectively. It contains important information on the following topics:
 
 1. Library: Here you will find instructions on how to install the library. You will learn what functions and possibilities the library offers and how to use it.
 
@@ -44,7 +44,7 @@ For more information on software design, see the [User Manual](./User%20manual/u
 The Software Requirement section includes the requirements and specifications for the project. Both the functional and non-functional requirements are defined here. \
 The aim is to ensure that the project fulfils the desired functions and meets the requirements of the users.
 
-For more information on software requirements, see the [Software Requirement Document](./Software%20requirements%20document/SRD.pdf).
+For more information about the requirements of this project, see the [Software Requirement Document](./Software%20requirements%20document/SRD.pdf).
 
 ## Software Design
 
@@ -54,9 +54,9 @@ For more information on software design, see the [Software Design Document](./So
 
 ## User Story Map
 
-The user story map is a visual representation of the requirements and functions from the user's point of view. It shows the different user stories and their prioritisation. The User Story Map helps to get a comprehensive overview of the requirements and their relationships to each other.
+The user story map is a visual representation of the requirements and functions from the user's point of view. It shows the different user stories and their prioritization. The user story map helps to get a comprehensive overview of the requirements and their relationships to each other.
 
-For more information on the User Story Map, see the [User Story Map document](./User%20Story%20Map/User%20Story%20Map.pdf).
+For more information on the user story map, see the [User Story Map document](./User%20Story%20Map/User%20Story%20Map.pdf).
 
 ## Requirements Engineering
 
@@ -67,7 +67,7 @@ In this document you will find detailed information on two aspects of requiremen
     The document explains how to identify and add new features or user stories. It describes the process for understanding user requirements, transforming them into specific features or user stories, and integrating them into the development process.
 
 2. Decisions about adding or removing user stories or features: \
-    The document also covers the decision making behind adding or removing User Stories or Features. It explains what factors are considered when evaluating and prioritising requirements and how decisions are made to make the best use of project scope and resources.
+    The document also covers the decision making behind adding or removing user stories or features. It explains what factors are considered when evaluating and prioritizing requirements and how decisions are made to make the best use of project scope and resources.
 
 For more information on requirements engineering, see the [requirements engineering document](./Requirements%20Engineering/re_doc.pdf).
 
@@ -87,13 +87,13 @@ Sie können auf die folgenden Protokolle zugreifen:
 
 ## Mockup
 
-The mockup is a graphic representation of the user interface or design of the project. It gives a visual idea of what the final product will look like.
+The mockup is a graphic representation of the user interface or design of the project. It gives a visual idea of what the final demo app will look like.
 
 For more information on the mockup, see the [mockup document](./Mockup/Pages.pdf).
 
 ## Sensors
 
-The Sensors section describes the different sensors used in the project. You will get information about the different types of sensors, their functions, properties and their implementation in the project. 
+The "Sensors" section describes the different sensors used in the project. You will get information about the different types of sensors, their functions, properties and their implementation in the project. 
 
 This section provides an overview of how the sensors are used and how they can be integrated into the application to enable certain functions or measurements.
 
