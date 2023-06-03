@@ -37,7 +37,7 @@ The User Manual is a guide to help users use the library and demo app effectivel
 
 2. Demo app: The demo app serves as a sample application to demonstrate the functionality of the library. You will receive information on the purpose of the Demo App, the general structure, the available functions and the integration of the library into the app. You will also find a practical example that illustrates the use of the library in the Demo App.
 
-For more information on software design, see the [User Manual](./User%20manual/user_manual.tex).
+For more information on user manual, see the [User Manual](./User%20manual/user_manual.tex).
 
 ## Software Requirement
 
