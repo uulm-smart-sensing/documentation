@@ -74,14 +74,12 @@ For more information on requirements engineering, see the [requirements engineer
 ## Protocols
 
 The protocols provide records of past meetings, sessions or discussions in the project. They serve as a reference for decisions made, issues discussed and project progress.
-Sie können auf die folgenden Protokolle zugreifen:
+You can access the following protocols:
 
 - [Protokoll vom 21. September 2022](Protocols/2022_09_21)
 - [Protokoll vom 14. Oktober 2022](Protocols/2022_10_14)
 - [Protokoll vom 20. Oktober 2022](Protocols/2022_10_20)
-- [Protokoll
-
- vom 25. Oktober 2022](Protocols/2022_10_25)
+- [Protokoll vom 25. Oktober 2022](Protocols/2022_10_25)
 - [Protokoll vom 30. Oktober 2022](Protocols/2022_10_30)
 - [Protokoll vom 4. November 2022](Protocols/2022_11_04)
 
