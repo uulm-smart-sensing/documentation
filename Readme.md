@@ -48,7 +48,7 @@ For more information about the requirements of this project, see the [Software R
 
 ## Software Design
 
-The section "Software Design" describes the architecture and structure of the software. The various components, their interactions and the overall structure are explained here. The software design document provides a detailed insight into the implementation of the software.
+The section "Software Design" describes the architecture and structure of the software. The various components, their interactions and the overall structure are explained here. 
 
 For more information on software design, see the [Software Design Document](./Software%20design%20document/design_doc.pdf).
 
