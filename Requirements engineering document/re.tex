@@ -12,6 +12,7 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 \usepackage{graphicx}
+\usepackage{caption}
 
 
 \renewcommand{\baselinestretch}{1.1}
@@ -129,17 +130,19 @@ Representative: & #4 \\
 \section{Adding a new feature / user story}
 \subsection{Creating a new user story}
 
-To add a new feature, it is important to understand the user story process from the perspective of the user. User stories are a proven method to describe requirements from the user’s perspective.
+To add a new feature, it is important to understand the \texit{user story} process from the perspective of the user. \texit{User stories} are a proven method to describe requirements from the user’s perspective.
 
-Once the user story is clearly formulated, you can move on to the next step and integrate it into an existing user story map. To do this, you should first identify the right place in the existing system where the new function can best be integrated. Then add the user story to the user story map by creating a new entry or updating an existing one that describes the feature and its requirements.
+Once the \texit{user story} is clearly formulated, you can move on to the next step and integrate it into an existing \texit{user story map}. To do this, you should first identify the right place in the existing system where the new function can best be integrated. Then add the \texit{user story} to the \texit{user story map} by creating a new entry or updating an existing one that describes the feature and its requirements.
 
-Integrating the user story into the map gives users a clear understanding of how the new feature fits into the overall system and how it can be used. This can help them make informed decisions and use the new feature effectively.
+Integrating the \texit{user story} into the map gives users a clear understanding of how the new feature fits into the overall system and how it can be used. This can help them make informed decisions and use the new feature effectively.
 
-It is important to remember that integrating a new user story into a map may also require changes to other parts of the system. It is therefore important to carefully plan and coordinate the integration of new functionality to ensure that it fits seamlessly into the existing system.
+It is important to remember that integrating a new \texit{user story} into a map may also require changes to other parts of the system. It is therefore important to carefully plan and coordinate the integration of new functionality to ensure that it fits seamlessly into the existing system. (c.f. \autoref{fig:UserStoryMap} )
 
-For more information on how to describe a user story, please visit \href{https://www.atlassian.com/agile/project-management/user-stories}{User stories with examples and a template}
+For more information on how to describe a \texit{user story}, please visit \href{https://www.atlassian.com/agile/project-management/user-stories}{User stories with examples and a template}
 
  \includegraphics[width=\textwidth]{user_story_map.png}
+ \captionof{figure}{User Story Map}
+ \label{fig:UserStoryMap}
  
 
 \subsection{Adding a new feature}
@@ -152,7 +155,7 @@ After the issue is created, a separate feature branch is created for the feature
 \subsubsection{Creating an issue}
 When creating the issue, you should use the appropriate template to clearly define the objective of the feature. 
 
-For example, if you want to add a new sensor to the app, you can select the issue template \textit{Feature} and fill out the template with the relevant information. This template includes sections for feature description, use case, benefits, requirements, and links/references. 
+For example, if you want to add a new sensor to the app, you can select the description template \textit{Feature} and fill out the template with the relevant information. The template includes sections for feature description, use case, benefits, requirements, and links/references (c.f. \autoref{fig:IssueTemplate} )
  \begin{enumerate}
       \item
       In the feature description section, you can explain what type of sensor you want to add and how it should function. 
@@ -164,7 +167,10 @@ For example, if you want to add a new sensor to the app, you can select the issu
       Finally, in the links/references section, you can provide any relevant links or references that may help developers understand your requirements and implement the new feature accordingly. 
       
 
-    \includegraphics[width=0.9\textwidth]{issue.png}
+    \includegraphics[width=0.8\textwidth]{issue.png}
+
+    \captionof{figure}{Template for creating new (feature) issue}
+    \label{fig:IssueTemplate}
   
  \end{enumerate}
 
@@ -180,6 +186,8 @@ To plan and track the progress of the issue, it is useful to set a date by which
 By including this additional information and details, the issue becomes more comprehensive and structured. This facilitates communication, planning and progress of the feature in the project.
 
  \includegraphics[width=\textwidth]{issue2.png}
+ \captionof{figure}{Template for creating additional information for (feature) issue }
+    \label{fig:IssueTemplate2}
  
 \subsubsection{Reviewing an Issue}
 \begin{minipage}[t]{0.51\textwidth}
@@ -208,7 +216,7 @@ For more information about reviewing an issue, please see our \href{https://gitl
 \subsubsection{Weight of Issues}
 The weighting of an issue is done in our regular sprint meetings, which are held every two weeks. In these meetings, we discuss together how an issue should be weighted. The weight of an issue indicates the estimated effort required to complete it within a sprint. We use a scale of 1 to 5, with a value of 1 representing the lowest effort, while a value of 5 signals the highest effort.
 
-Through this structured approach, we can estimate the workload for each sprint and ensure that new features and user stories are integrated into our system effectively and professionally. This allows us to continuously improve the user experience and meet the needs and requirements of our users.
+Through this structured approach, we can estimate the workload for each sprint and ensure that new features and \texit{user stories} are integrated into our system effectively and professionally. This allows us to continuously improve the user experience and meet the needs and requirements of our users.
 
 \section{Decisions about adding/removing features or user stories}
 When it comes to adding or removing a feature, this is also discussed in the sprint meeting and then decided. It happens that certain features have to be removed, either because they cannot be implemented within the given time frame or due to a lack of capacity. In such cases, we may need to prioritize other features and remove those that are less important or require more effort to implement. It is the same with the integration of features. We have found that in some cases we were missing certain functionalities of which we had no prior knowledge and which had to be added subsequently.
