@@ -248,7 +248,7 @@ The updated version represents the current implementation. It now works with the
 
 \subsubsection{MultiFilterTools}
 \label{sec:MultiFilterTools}
-The MultiFilterTools extend the \hyperref[sec:FilterTools]{FilterTools} and was added with Verison 1.1. It added the functionality to create a query on multiple sensors. 
+The MultiFilterTools extend the \hyperref[sec:FilterTools]{FilterTools} and was added with version 1.1. It added the functionality to create a query on multiple sensors simultaneously. 
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/MultiFilterTools}
@@ -258,8 +258,7 @@ The MultiFilterTools extend the \hyperref[sec:FilterTools]{FilterTools} and was 
 
 \subsubsection{DeviceInformationManager}
 \label{sec:DeviceInformationManager}
-The DeviceInformationManager was added with Verison 1.1. It added the functionality to read current device information, like current os or free space.
-
+The device information manager was added with Version 1.1. It added the functionality to read current device information, like current OS or free space.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/DeviceInformationManager}
@@ -269,7 +268,7 @@ The DeviceInformationManager was added with Verison 1.1. It added the functional
 
 \subsubsection{SensorDataDTO}
 \label{sec:SensorDataDTO}
-The SensorDataDTO was added with Verison 1.1. It serves as the SensorData datatype in the database. The reason for the seperation between SensorDataDTO and \hyperref[sec:SensorData]{SensorData} is the mutable state. SensorDataDTO is immutable while \hyperref[sec:SensorData]{SensorData} can get changed (eg. by the preprocessor) and  is therefore mutable. The immutable state is needed for the database. DTO stands for "Data Transfer Object".
+The SensorDataDTO was added with version 1.1. It serves as the SensorData datatype in the database. The reason for the seperation between SensorDataDTO and \hyperref[sec:SensorData]{SensorData} is the mutable state. SensorDataDTO is immutable while \hyperref[sec:SensorData]{SensorData} can get changed (e.g. by the preprocessor) and is therefore mutable. The immutable state is needed for the database. DTO stands for "Data Transfer Object".
 
 \begin{figure}[ht]
 \centering
@@ -281,7 +280,7 @@ The SensorDataDTO was added with Verison 1.1. It serves as the SensorData dataty
 
 \subsubsection{Import/Export Module}
 \label{sec:Import/ExportModule}
-The Import/Export module was added with Verison 1.1. It added the functionality to import or export data to and from the database. It consists of three objects:
+The Import/Export module was added with version 1.1. It added the functionality to import or export data to and from the database. It consists of three objects:
 \begin{itemize}
   \item The ImportModule, which handles all import functions.
   \item The ExportModule, which handles all export functions.
@@ -355,7 +354,7 @@ This class is representing a sensor.
 
 \subsubsection{SensorPropertyValidator}
 \label{sec:SensorPropertyValidator}
-The SensorPropertyValidator class ensures that the specified precision and time interval are maintained.
+The SensorPropertyValidator class ensures that the specified precision and time intervall are maintained.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/SensorPropertyValidator}
@@ -374,7 +373,7 @@ The Peprocessor class ensures that Android and iOS return consistent value types
 \newpage
 \subsubsection{SensorConfig}
 \label{sec:SensorConfig}
-The SensorConfig class holds various configurations for the \hyperref[sec:Preprocessor]{preprocessor}, including the time interval, precision, and target unit.
+The SensorConfig class holds various configurations for the \hyperref[sec:Preprocessor]{preprocessor}, including the time intervall, precision, and target unit.
 \begin{figure}[ht]
 \centering
 \includesvg[width=0.6\textwidth]{Graphics/SensorConfig}
